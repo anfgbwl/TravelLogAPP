@@ -11,7 +11,7 @@ import SnapKit
 class BucketListViewController: UIViewController {
     
     // viewContext
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     
     // MARK: - Variables
@@ -101,6 +101,18 @@ class BucketListViewController: UIViewController {
         }
     }
     
+    
+    private func formattedDate(from date: Date?) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        if let date = date {
+            return dateFormatter.string(from: date)
+        } else {
+            return "Empty"
+        }
+    }
+    
 
 }
 
@@ -121,6 +133,39 @@ extension BucketListViewController: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.textColor = .black
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectTask = self.bucketList![indexPath.row]
+        
+        let alert = UIAlertController(title: "Edit Bucket List",
+                                      message: "\nCreate Date: \(formattedDate(from: selectTask.createDate))\nModify Date: \(formattedDate(from: selectTask.modifyDate))\n",
+                                      preferredStyle: .alert)
+        alert.addTextField()
+        
+        let textField = alert.textFields![0]
+        textField.text = selectTask.title
+        
+        let save = UIAlertAction(title: "Save", style: .default) { _ in
+            let textField = alert.textFields![0]
+            selectTask.title = textField.text
+            selectTask.isCompleted = false
+            selectTask.modifyDate = Date()
+            
+            do {
+                try self.context.save()
+            } catch {
+                print("🚨 Error: Save task")
+            }
+            self.fetchTask()
+            
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(save)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // Complete Task
