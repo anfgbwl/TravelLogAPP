@@ -13,6 +13,9 @@
 		3F3862622AB29BFB00479E4C /* TravelLogAPP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F3862602AB29BFB00479E4C /* TravelLogAPP.xcdatamodeld */; };
 		3F3862642AB29BFC00479E4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F3862632AB29BFC00479E4C /* Assets.xcassets */; };
 		3F3862672AB29BFC00479E4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F3862652AB29BFC00479E4C /* LaunchScreen.storyboard */; };
+		3F38626F2AB29CD800479E4C /* BucketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38626E2AB29CD800479E4C /* BucketListViewController.swift */; };
+		3F3862712AB29DF400479E4C /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3862702AB29DF400479E4C /* CompleteViewController.swift */; };
+		3F3862732AB29E4800479E4C /* ProfileDesignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3862722AB29E4800479E4C /* ProfileDesignViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		3F3862632AB29BFC00479E4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F3862662AB29BFC00479E4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F3862682AB29BFC00479E4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F38626E2AB29CD800479E4C /* BucketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListViewController.swift; sourceTree = "<group>"; };
+		3F3862702AB29DF400479E4C /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
+		3F3862722AB29E4800479E4C /* ProfileDesignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDesignViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 				3F3862572AB29BFB00479E4C /* AppDelegate.swift */,
 				3F3862592AB29BFB00479E4C /* SceneDelegate.swift */,
 				3F38625B2AB29BFB00479E4C /* ViewController.swift */,
+				3F38626E2AB29CD800479E4C /* BucketListViewController.swift */,
+				3F3862702AB29DF400479E4C /* CompleteViewController.swift */,
+				3F3862722AB29E4800479E4C /* ProfileDesignViewController.swift */,
 				3F3862632AB29BFC00479E4C /* Assets.xcassets */,
 				3F3862652AB29BFC00479E4C /* LaunchScreen.storyboard */,
 				3F3862682AB29BFC00479E4C /* Info.plist */,
@@ -140,7 +149,10 @@
 				3F38625C2AB29BFB00479E4C /* ViewController.swift in Sources */,
 				3F3862582AB29BFB00479E4C /* AppDelegate.swift in Sources */,
 				3F3862622AB29BFB00479E4C /* TravelLogAPP.xcdatamodeld in Sources */,
+				3F3862732AB29E4800479E4C /* ProfileDesignViewController.swift in Sources */,
+				3F38626F2AB29CD800479E4C /* BucketListViewController.swift in Sources */,
 				3F38625A2AB29BFB00479E4C /* SceneDelegate.swift in Sources */,
+				3F3862712AB29DF400479E4C /* CompleteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
