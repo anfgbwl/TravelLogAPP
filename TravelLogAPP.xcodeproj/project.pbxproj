@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0C504F2AB2DA6800F9D398 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C504D2AB2DA6800F9D398 /* Task+CoreDataClass.swift */; };
 		3F3862582AB29BFB00479E4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3862572AB29BFB00479E4C /* AppDelegate.swift */; };
 		3F38625A2AB29BFB00479E4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3862592AB29BFB00479E4C /* SceneDelegate.swift */; };
 		3F38625C2AB29BFB00479E4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38625B2AB29BFB00479E4C /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F0C504D2AB2DA6800F9D398 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3F3862542AB29BFB00479E4C /* TravelLogAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelLogAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3862572AB29BFB00479E4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F3862592AB29BFB00479E4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F0C504C2AB2D89900F9D398 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3F0C504D2AB2DA6800F9D398 /* Task+CoreDataClass.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3F38624B2AB29BFB00479E4C = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +74,7 @@
 		3F3862562AB29BFB00479E4C /* TravelLogAPP */ = {
 			isa = PBXGroup;
 			children = (
+				3F0C504C2AB2D89900F9D398 /* Model */,
 				3F3862572AB29BFB00479E4C /* AppDelegate.swift */,
 				3F3862592AB29BFB00479E4C /* SceneDelegate.swift */,
 				3F38625B2AB29BFB00479E4C /* ViewController.swift */,
@@ -156,6 +167,7 @@
 			files = (
 				3F38625C2AB29BFB00479E4C /* ViewController.swift in Sources */,
 				3F3862582AB29BFB00479E4C /* AppDelegate.swift in Sources */,
+				3F0C504F2AB2DA6800F9D398 /* Task+CoreDataClass.swift in Sources */,
 				3F3862622AB29BFB00479E4C /* TravelLogAPP.xcdatamodeld in Sources */,
 				3F3862732AB29E4800479E4C /* ProfileDesignViewController.swift in Sources */,
 				3F38626F2AB29CD800479E4C /* BucketListViewController.swift in Sources */,

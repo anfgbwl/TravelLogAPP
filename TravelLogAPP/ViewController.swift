@@ -99,7 +99,6 @@ class ViewController: UIViewController {
         self.view.addSubview(bucketListButton)
         self.view.addSubview(completedButton)
         self.view.addSubview(profileImageView)
-//        self.view.addSubview(stackView)
         
         imageView.snp.makeConstraints { make in
             make.top.equalTo(150)
@@ -123,13 +122,11 @@ class ViewController: UIViewController {
         
         profileImageView.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp_bottomMargin).offset(30)
-            make.leading.equalToSuperview().offset(80)
+            make.trailing.equalToSuperview().offset(-30)
+            make.width.equalTo(150)
             make.height.equalTo(140)
         }
-//        stackView.snp.makeConstraints { make in
-//            make.top.equalTo(imageView.snp_bottomMargin).offset(30)
-//            make.leading.trailing.equalToSuperview().offset(20)
-//        }
+        
     }
 
 
