@@ -123,4 +123,51 @@ extension BucketListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    // Complete Task
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let completeAction = UIContextualAction(style: .normal, title: "Complete") { (action, view, completionHandler) in
+            let completedTask = self.bucketList![indexPath.row]
+            completedTask.isCompleted = true
+            
+            do {
+                try self.context.save()
+            } catch {
+                print("🚨 Error: Completed task")
+            }
+            self.fetchTask()
+        }
+        completeAction.backgroundColor = UIColor(red: 118/255, green: 138/255, blue: 225/255, alpha: 255)
+        
+        let inCompleteAction = UIContextualAction(style: .normal, title: "Add List") { (action, view, completionHandler) in
+            let inCompletedTask = self.bucketList![indexPath.row]
+            inCompletedTask.isCompleted = false
+            
+            do {
+                try self.context.save()
+            } catch {
+                print("🚨 Error: Incompleted task")
+            }
+            self.fetchTask()
+        }
+        inCompleteAction.backgroundColor = UIColor(red: 87/255, green: 231/255, blue: 117/255, alpha: 255)
+        
+        return UISwipeActionsConfiguration(actions: [completeAction, inCompleteAction])
+    }
+    
+    // Delete Task
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "delete") { (action, view, completionHandler) in
+            let deleteTask = self.bucketList![indexPath.row]
+            self.context.delete(deleteTask)
+            
+            do {
+                try self.context.save()
+            } catch {
+                print("🚨 Error: Save task")
+            }
+            self.fetchTask()
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
 }
