@@ -8,16 +8,15 @@
 import UIKit
 
 class CompleteViewController: UIViewController {
-    
     // viewContext
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-    
     // MARK: - Variables
+
     private var completedList: [Task]?
-    
-    
+
     // MARK: - UI Conponents
+
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 255)
@@ -28,34 +27,34 @@ class CompleteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupUI()
         tableView.dataSource = self
         tableView.delegate = self
         fetchTask()
     }
-    
+
     // MARK: - setupUI
+
     private func setupUI() {
-        self.navigationItem.title = "✍🏻 Bucket List ✍🏻"
-        self.view.addSubview(tableView)
-        
+        navigationItem.title = "✅ Completed List ✅"
+        view.addSubview(tableView)
+
         tableView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
         }
-        
     }
-    
-    
+
     // MARK: - Core Data
+
     private func fetchTask() {
         let request = Task.fetchRequest()
-        
+
         let pred = NSPredicate(format: "isCompleted == %@", NSNumber(value: true))
         request.predicate = pred
-        
+
         do {
-            self.completedList = try context.fetch(request)
+            completedList = try context.fetch(request)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -69,7 +68,7 @@ extension CompleteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return completedList?.count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "completedListCell", for: indexPath)
         let completedTask = completedList![indexPath.row]

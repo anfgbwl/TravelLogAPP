@@ -5,12 +5,12 @@
 //  Created by t2023-m0076 on 2023/09/14.
 //  Main Page
 
-import UIKit
 import SnapKit
+import UIKit
 
 class ViewController: UIViewController {
-    
     // MARK: - UI Conponents
+
     // ImageView
     private let imageView: UIImageView = {
         let iv = UIImageView()
@@ -60,26 +60,26 @@ class ViewController: UIViewController {
         return iv
     }()
 
-    
     // MARK: - Tapped Action
+
     @objc private func didTapBucketListButton() {
         let BucketVC = BucketListViewController()
-        self.navigationController?.pushViewController(BucketVC, animated: true)
+        navigationController?.pushViewController(BucketVC, animated: true)
     }
     
     @objc private func didTapCompleteButton() {
         let CompleteVC = CompleteViewController()
-        self.navigationController?.pushViewController(CompleteVC, animated: true)
+        navigationController?.pushViewController(CompleteVC, animated: true)
     }
     
     @objc private func didTapProfileImageView(_ sender: UITapGestureRecognizer) {
         let ProfileVC = ProfileDesignViewController()
         ProfileVC.modalPresentationStyle = .fullScreen
-        self.present(ProfileVC, animated: true, completion: nil)
+        present(ProfileVC, animated: true, completion: nil)
     }
     
-    
     // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -90,15 +90,15 @@ class ViewController: UIViewController {
         profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapProfileImageView)))
     }
     
-    
     // MARK: - setupUI
+
     private func setupUI() {
         view.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 255)
         
-        self.view.addSubview(imageView)
-        self.view.addSubview(bucketListButton)
-        self.view.addSubview(completedButton)
-        self.view.addSubview(profileImageView)
+        view.addSubview(imageView)
+        view.addSubview(bucketListButton)
+        view.addSubview(completedButton)
+        view.addSubview(profileImageView)
         
         imageView.snp.makeConstraints { make in
             make.top.equalTo(150)
@@ -126,9 +126,5 @@ class ViewController: UIViewController {
             make.width.equalTo(150)
             make.height.equalTo(140)
         }
-        
     }
-
-
 }
-
