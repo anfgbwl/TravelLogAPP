@@ -16,6 +16,7 @@
 		3F38626F2AB29CD800479E4C /* BucketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38626E2AB29CD800479E4C /* BucketListViewController.swift */; };
 		3F3862712AB29DF400479E4C /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3862702AB29DF400479E4C /* CompleteViewController.swift */; };
 		3F3862732AB29E4800479E4C /* ProfileDesignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3862722AB29E4800479E4C /* ProfileDesignViewController.swift */; };
+		3F3862762AB2A07A00479E4C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3862752AB2A07A00479E4C /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F3862762AB2A07A00479E4C /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +94,9 @@
 			dependencies = (
 			);
 			name = TravelLogAPP;
+			packageProductDependencies = (
+				3F3862752AB2A07A00479E4C /* SnapKit */,
+			);
 			productName = TravelLogAPP;
 			productReference = 3F3862542AB29BFB00479E4C /* TravelLogAPP.app */;
 			productType = "com.apple.product-type.application";
@@ -120,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 3F38624B2AB29BFB00479E4C;
+			packageReferences = (
+				3F3862742AB2A07A00479E4C /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 3F3862552AB29BFB00479E4C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -295,7 +303,6 @@
 				INFOPLIST_FILE = TravelLogAPP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,7 +329,6 @@
 				INFOPLIST_FILE = TravelLogAPP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -360,6 +366,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3F3862742AB2A07A00479E4C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3F3862752AB2A07A00479E4C /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F3862742AB2A07A00479E4C /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		3F3862602AB29BFB00479E4C /* TravelLogAPP.xcdatamodeld */ = {

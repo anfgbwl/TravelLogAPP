@@ -6,12 +6,107 @@
 //  Main Page
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController {
+    
+    // MARK: - UI Conponents
+    // ImageView
+    private let imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "mainImage")
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+    
+    // Bucket List Button
+    private let bucketListButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Let's go ✈️✌🏻", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        button.backgroundColor = UIColor(red: 87/255, green: 231/255, blue: 117/255, alpha: 255)
+        button.layer.cornerRadius = 10
+        return button
+    }()
+    
+    // Completed Button
+    private let completedButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("I'm home 🏠", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        button.backgroundColor = UIColor(red: 118/255, green: 138/255, blue: 225/255, alpha: 255)
+        button.layer.cornerRadius = 10
+        return button
+    }()
+    
+    // Bucket List & Completed StackView
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [bucketListButton, completedButton])
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 20
+        return stackView
+    }()
+    
+    // Profile & Travel Log ImageView
+    private let profileImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "profile")
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
 
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - setupUI
+    private func setupUI() {
+        view.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 255)
+        
+        self.view.addSubview(imageView)
+        self.view.addSubview(bucketListButton)
+        self.view.addSubview(completedButton)
+        self.view.addSubview(profileImageView)
+//        self.view.addSubview(stackView)
+        
+        imageView.snp.makeConstraints { make in
+            make.top.equalTo(150)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(400)
+        }
+        
+        bucketListButton.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp_bottomMargin).offset(50)
+            make.leading.equalToSuperview().offset(30)
+            make.width.equalTo(150)
+            make.height.equalTo(50)
+        }
+
+        completedButton.snp.makeConstraints { make in
+            make.top.equalTo(bucketListButton.snp_bottomMargin).offset(30)
+            make.leading.equalToSuperview().offset(30)
+            make.width.equalTo(150)
+            make.height.equalTo(50)
+        }
+        
+        profileImageView.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp_bottomMargin).offset(30)
+            make.leading.equalToSuperview().offset(80)
+            make.height.equalTo(140)
+        }
+//        stackView.snp.makeConstraints { make in
+//            make.top.equalTo(imageView.snp_bottomMargin).offset(30)
+//            make.leading.trailing.equalToSuperview().offset(20)
+//        }
     }
 
 
