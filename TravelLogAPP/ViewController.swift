@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     // Completed Button
     private let completedButton: UIButton = {
         let button = UIButton()
-        button.setTitle("I'm home 🏠", for: .normal)
+        button.setTitle("Is completed 🫡", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 17)
         button.backgroundColor = UIColor(red: 118/255, green: 138/255, blue: 225/255, alpha: 255)
@@ -56,15 +56,38 @@ class ViewController: UIViewController {
         let iv = UIImageView()
         iv.image = UIImage(named: "profile")
         iv.contentMode = .scaleAspectFit
+        iv.isUserInteractionEnabled = true
         return iv
     }()
 
+    
+    // MARK: - Tapped Action
+    @objc private func didTapBucketListButton() {
+        let BucketVC = BucketListViewController()
+        self.navigationController?.pushViewController(BucketVC, animated: true)
+    }
+    
+    @objc private func didTapCompleteButton() {
+        let CompleteVC = CompleteViewController()
+        self.navigationController?.pushViewController(CompleteVC, animated: true)
+    }
+    
+    @objc private func didTapProfileImageView(_ sender: UITapGestureRecognizer) {
+        let ProfileVC = ProfileDesignViewController()
+        ProfileVC.modalPresentationStyle = .fullScreen
+        self.present(ProfileVC, animated: true, completion: nil)
+    }
+    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        
+        bucketListButton.addTarget(self, action: #selector(didTapBucketListButton), for: .touchUpInside)
+        completedButton.addTarget(self, action: #selector(didTapCompleteButton), for: .touchUpInside)
+        profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapProfileImageView)))
     }
     
     
@@ -86,14 +109,14 @@ class ViewController: UIViewController {
         
         bucketListButton.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp_bottomMargin).offset(50)
-            make.leading.equalToSuperview().offset(30)
+            make.leading.equalToSuperview().offset(40)
             make.width.equalTo(150)
             make.height.equalTo(50)
         }
 
         completedButton.snp.makeConstraints { make in
             make.top.equalTo(bucketListButton.snp_bottomMargin).offset(30)
-            make.leading.equalToSuperview().offset(30)
+            make.leading.equalToSuperview().offset(40)
             make.width.equalTo(150)
             make.height.equalTo(50)
         }
