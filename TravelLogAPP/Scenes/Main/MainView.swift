@@ -1,17 +1,15 @@
 //
-//  ViewController.swift
+//  MainView.swift
 //  TravelLogAPP
 //
-//  Created by t2023-m0076 on 2023/09/14.
-//  Main Page
+//  Created by t2023-m0076 on 2023/09/15.
+//
 
-import SnapKit
 import UIKit
 
-class ViewController: UIViewController {
+class MainView: UIView {
     // MARK: - UI Conponents
 
-    // ImageView
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "mainImage")
@@ -19,8 +17,7 @@ class ViewController: UIViewController {
         return iv
     }()
     
-    // Bucket List Button
-    private let bucketListButton: UIButton = {
+    let bucketListButton: UIButton = {
         let button = UIButton()
         button.setTitle("Let's go ✈️✌🏻", for: .normal)
         button.setTitleColor(.black, for: .normal)
@@ -30,8 +27,7 @@ class ViewController: UIViewController {
         return button
     }()
     
-    // Completed Button
-    private let completedButton: UIButton = {
+    let completedButton: UIButton = {
         let button = UIButton()
         button.setTitle("Is completed 🫡", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -41,7 +37,6 @@ class ViewController: UIViewController {
         return button
     }()
     
-    // Bucket List & Completed StackView
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [bucketListButton, completedButton])
         stackView.axis = .horizontal
@@ -51,54 +46,36 @@ class ViewController: UIViewController {
         return stackView
     }()
     
-    // Profile & Travel Log ImageView
-    private let profileImageView: UIImageView = {
+    let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "profile")
         iv.contentMode = .scaleAspectFit
         iv.isUserInteractionEnabled = true
         return iv
     }()
-
-    // MARK: - Tapped Action
-
-    @objc private func didTapBucketListButton() {
-        let BucketVC = BucketListViewController()
-        navigationController?.pushViewController(BucketVC, animated: true)
-    }
     
-    @objc private func didTapCompleteButton() {
-        let CompleteVC = CompleteViewController()
-        navigationController?.pushViewController(CompleteVC, animated: true)
-    }
+    // MARK: - Initializer
     
-    @objc private func didTapProfileImageView(_ sender: UITapGestureRecognizer) {
-        let ProfileVC = ProfileDesignViewController()
-        ProfileVC.modalPresentationStyle = .fullScreen
-        present(ProfileVC, animated: true, completion: nil)
-    }
-    
-    // MARK: - Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         setupUI()
-        
-        bucketListButton.addTarget(self, action: #selector(didTapBucketListButton), for: .touchUpInside)
-        completedButton.addTarget(self, action: #selector(didTapCompleteButton), for: .touchUpInside)
-        profileImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapProfileImageView)))
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - setupUI
 
     private func setupUI() {
-        view.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 255)
+        backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 255)
         
-        view.addSubview(imageView)
-        view.addSubview(bucketListButton)
-        view.addSubview(completedButton)
-        view.addSubview(profileImageView)
+        addSubview(imageView)
+        addSubview(bucketListButton)
+        addSubview(completedButton)
+        addSubview(profileImageView)
         
         imageView.snp.makeConstraints { make in
             make.top.equalTo(150)
