@@ -11,8 +11,6 @@ import UIKit
 class ViewController: UIViewController {
     private let mainView = MainView()
 
-    // MARK: - Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
