@@ -5,11 +5,10 @@
 //  Created by t2023-m0076 on 2023/09/15.
 //
 
+import SnapKit
 import UIKit
 
 class MainView: UIView {
-    // MARK: - UI Conponents
-
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "mainImage")
@@ -53,22 +52,17 @@ class MainView: UIView {
         iv.isUserInteractionEnabled = true
         return iv
     }()
-    
-    // MARK: - Initializer
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupUI()
     }
     
-    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - setupUI
-
     private func setupUI() {
         backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 255)
         
