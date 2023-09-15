@@ -8,72 +8,54 @@
 import UIKit
 
 class CompleteViewController: UIViewController {
-    // viewContext
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-    // MARK: - Variables
-
-    private var completedList: [Task]?
-
-    // MARK: - UI Conponents
-
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 255)
-        tableView.separatorColor = .systemGray
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "completedListCell")
-        return tableView
-    }()
+    private let completeView = CompleteView()
+    private let completeViewModel = CompleteViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupUI()
-        tableView.dataSource = self
-        tableView.delegate = self
-        fetchTask()
+        tableViewReload()
+        setup()
+        setupNavigationItem()
+        completeViewModel.fetchCompletedBucketList()
     }
-
-    // MARK: - setupUI
-
-    private func setupUI() {
-        navigationItem.title = "✅ Completed List ✅"
-        view.addSubview(tableView)
-
-        tableView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
-        }
+    
+    deinit {
+        print("CompleteVC deinitialized")
     }
+}
 
-    // MARK: - Core Data
-
-    private func fetchTask() {
-        let request = Task.fetchRequest()
-
-        let pred = NSPredicate(format: "isCompleted == %@", NSNumber(value: true))
-        request.predicate = pred
-
-        do {
-            completedList = try context.fetch(request)
+private extension CompleteViewController {
+    func tableViewReload() {
+        completeViewModel.tableViewReloadHandler = { [weak self] in
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.completeView.tableView.reloadData()
             }
-        } catch {
-            print("🚨 Error: Fetch Task")
         }
+    }
+    
+    func setup() {
+        view = completeView
+        completeView.tableView.dataSource = self
+        completeView.tableView.delegate = self
+    }
+
+    func setupNavigationItem() {
+        navigationItem.title = "✅ Completed List ✅"
     }
 }
 
 extension CompleteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return completedList?.count ?? 0
+        return completeViewModel.completedList?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "completedListCell", for: indexPath)
-        let completedTask = completedList![indexPath.row]
-        cell.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 255)
-        cell.textLabel?.text = completedTask.title
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BucketListCell.identifier, for: indexPath) as? BucketListCell else {
+            fatalError("Error")
+        }
+        let completedTask = completeViewModel.completedList![indexPath.row]
+        cell.configure(completedTask)
         return cell
     }
 }

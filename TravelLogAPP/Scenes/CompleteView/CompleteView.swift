@@ -1,14 +1,13 @@
 //
-//  BucketListView.swift
+//  CompleteView.swift
 //  TravelLogAPP
 //
 //  Created by t2023-m0076 on 2023/09/15.
 //
 
-import SnapKit
 import UIKit
 
-class BucketListView: UIView {
+class CompleteView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 255)
@@ -16,23 +15,17 @@ class BucketListView: UIView {
         tableView.register(BucketListCell.self, forCellReuseIdentifier: BucketListCell.identifier)
         return tableView
     }()
-
-    let addButton: UIBarButtonItem = {
-        let addButton = UIBarButtonItem()
-        addButton.image = UIImage(systemName: "plus.circle.fill")
-        return addButton
-    }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         setupUI()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     private func setupUI() {
         addSubview(tableView)
 

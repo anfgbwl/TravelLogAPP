@@ -12,6 +12,8 @@
 		3F0C505A2AB4268900F9D398 /* BucketListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C50592AB4268900F9D398 /* BucketListView.swift */; };
 		3F0C505C2AB4284100F9D398 /* BucketListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C505B2AB4284100F9D398 /* BucketListViewModel.swift */; };
 		3F0C505E2AB43E2200F9D398 /* BucketListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C505D2AB43E2200F9D398 /* BucketListCell.swift */; };
+		3F0C50602AB44FC700F9D398 /* CompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C505F2AB44FC700F9D398 /* CompleteView.swift */; };
+		3F0C50622AB4517000F9D398 /* CompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C50612AB4517000F9D398 /* CompleteViewModel.swift */; };
 		3F3862582AB29BFB00479E4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3862572AB29BFB00479E4C /* AppDelegate.swift */; };
 		3F38625A2AB29BFB00479E4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3862592AB29BFB00479E4C /* SceneDelegate.swift */; };
 		3F38625C2AB29BFB00479E4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38625B2AB29BFB00479E4C /* ViewController.swift */; };
@@ -30,6 +32,8 @@
 		3F0C50592AB4268900F9D398 /* BucketListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListView.swift; sourceTree = "<group>"; };
 		3F0C505B2AB4284100F9D398 /* BucketListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListViewModel.swift; sourceTree = "<group>"; };
 		3F0C505D2AB43E2200F9D398 /* BucketListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListCell.swift; sourceTree = "<group>"; };
+		3F0C505F2AB44FC700F9D398 /* CompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteView.swift; sourceTree = "<group>"; };
+		3F0C50612AB4517000F9D398 /* CompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewModel.swift; sourceTree = "<group>"; };
 		3F3862542AB29BFB00479E4C /* TravelLogAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelLogAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3862572AB29BFB00479E4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F3862592AB29BFB00479E4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 		3F0C50552AB420A400F9D398 /* CompleteView */ = {
 			isa = PBXGroup;
 			children = (
+				3F0C505F2AB44FC700F9D398 /* CompleteView.swift */,
+				3F0C50612AB4517000F9D398 /* CompleteViewModel.swift */,
 				3F3862702AB29DF400479E4C /* CompleteViewController.swift */,
 			);
 			path = CompleteView;
@@ -220,6 +226,8 @@
 				3F0C505A2AB4268900F9D398 /* BucketListView.swift in Sources */,
 				3F38625C2AB29BFB00479E4C /* ViewController.swift in Sources */,
 				3F0C50582AB420F300F9D398 /* MainView.swift in Sources */,
+				3F0C50622AB4517000F9D398 /* CompleteViewModel.swift in Sources */,
+				3F0C50602AB44FC700F9D398 /* CompleteView.swift in Sources */,
 				3F3862582AB29BFB00479E4C /* AppDelegate.swift in Sources */,
 				3F0C504F2AB2DA6800F9D398 /* Task+CoreDataClass.swift in Sources */,
 				3F0C505E2AB43E2200F9D398 /* BucketListCell.swift in Sources */,
