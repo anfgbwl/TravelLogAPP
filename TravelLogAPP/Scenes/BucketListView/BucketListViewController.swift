@@ -78,12 +78,7 @@ extension BucketListViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError("Error")
         }
         let task = viewModel.bucketList![indexPath.row]
-        cell.configure(task.title ?? "")
-        if task.isCompleted == true {
-            cell.textLabel?.textColor = .systemGray2
-        } else {
-            cell.textLabel?.textColor = .black
-        }
+        cell.configure(task)
         return cell
     }
     

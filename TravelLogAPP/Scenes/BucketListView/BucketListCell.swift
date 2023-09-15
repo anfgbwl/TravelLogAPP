@@ -27,8 +27,13 @@ class BucketListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configure(_ label: String) {
-        bucketListTitle.text = label
+    public func configure(_ task: Task) {
+        bucketListTitle.text = task.title
+        if task.isCompleted == true {
+            bucketListTitle.textColor = .systemGray2
+        } else {
+            bucketListTitle.textColor = .black
+        }
     }
 }
 
