@@ -8,24 +8,22 @@
 import UIKit
 
 class ProfileDesignViewController: UIViewController {
+    private let profileDesignView = ProfileDesignView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        view.backgroundColor = .gray
-        // Do any additional setup after loading the view.
+        setup()
+    }
+}
+
+private extension ProfileDesignViewController {
+    func setup() {
+        view = profileDesignView
+        profileDesignView.backButton.addTarget(self, action: #selector(setBackButton), for: .touchUpInside)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func setBackButton() {
+        self.dismiss(animated: true)
     }
-    */
-
 }
