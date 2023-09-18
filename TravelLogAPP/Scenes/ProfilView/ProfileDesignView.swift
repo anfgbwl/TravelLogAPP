@@ -208,13 +208,40 @@ class ProfileDesignView: UIView {
         return sv
     }()
     
+    private let divider: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray6
+        return view
+    }()
+    
+    private let grid: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "Grid")
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
+    private let sectionIndocator: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        return view
+    }()
+    
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .systemBackground
+        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "pictureCell")
+        return cv
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupUI()
     }
     
-    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -229,6 +256,9 @@ class ProfileDesignView: UIView {
         addSubview(userFollowInfo)
         addSubview(userInfo)
         addSubview(middleBar)
+        addSubview(divider)
+        addSubview(grid)
+        addSubview(sectionIndocator)
         
         backButton.snp.makeConstraints { make in
             make.centerY.equalTo(userId)
@@ -267,6 +297,25 @@ class ProfileDesignView: UIView {
             make.leading.equalTo(15)
             make.trailing.equalTo(-15)
             make.height.equalTo(30)
+        }
+        
+        divider.snp.makeConstraints { make in
+            make.top.equalTo(middleBar.snp.bottom).offset(10)
+            make.leading.trailing.equalTo(1)
+            make.height.equalTo(2)
+        }
+        
+        grid.snp.makeConstraints { make in
+            make.top.equalTo(divider.snp.bottom).offset(8)
+            make.leading.equalTo(52)
+            make.width.height.equalTo(22.5)
+        }
+        
+        sectionIndocator.snp.makeConstraints { make in
+            make.top.equalTo(grid.snp.bottom).offset(10.5)
+            make.leading.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(3)
+            make.height.equalTo(2)
         }
     }
 }
