@@ -232,7 +232,7 @@ class ProfileDesignView: UIView {
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .systemBackground
-        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "pictureCell")
+        cv.register(PictureCell.self, forCellWithReuseIdentifier: PictureCell.identifier)
         return cv
     }()
     
@@ -259,6 +259,7 @@ class ProfileDesignView: UIView {
         addSubview(divider)
         addSubview(grid)
         addSubview(sectionIndocator)
+        addSubview(collectionView)
         
         backButton.snp.makeConstraints { make in
             make.centerY.equalTo(userId)
@@ -316,6 +317,12 @@ class ProfileDesignView: UIView {
             make.leading.equalToSuperview()
             make.width.equalToSuperview().dividedBy(3)
             make.height.equalTo(2)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(sectionIndocator.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(380)
         }
     }
 }

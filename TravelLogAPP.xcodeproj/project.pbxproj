@@ -27,6 +27,7 @@
 		3F3862762AB2A07A00479E4C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3862752AB2A07A00479E4C /* SnapKit */; };
 		3F705C482AB7D6990005647F /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C462AB7D6990005647F /* User+CoreDataClass.swift */; };
 		3F705C4B2AB84A910005647F /* ProfileDesignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C4A2AB84A910005647F /* ProfileDesignViewModel.swift */; };
+		3F705C4D2AB85EA20005647F /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C4C2AB85EA20005647F /* PictureCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		3F3862722AB29E4800479E4C /* ProfileDesignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDesignViewController.swift; sourceTree = "<group>"; };
 		3F705C462AB7D6990005647F /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3F705C4A2AB84A910005647F /* ProfileDesignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDesignViewModel.swift; sourceTree = "<group>"; };
+		3F705C4C2AB85EA20005647F /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				3F0C50632AB4543200F9D398 /* ProfileDesignView.swift */,
+				3F705C4C2AB85EA20005647F /* PictureCell.swift */,
 				3F705C4A2AB84A910005647F /* ProfileDesignViewModel.swift */,
 				3F3862722AB29E4800479E4C /* ProfileDesignViewController.swift */,
 			);
@@ -244,6 +247,7 @@
 				3F3862582AB29BFB00479E4C /* AppDelegate.swift in Sources */,
 				3F0C505E2AB43E2200F9D398 /* BucketListCell.swift in Sources */,
 				3F3862622AB29BFB00479E4C /* TravelLogAPP.xcdatamodeld in Sources */,
+				3F705C4D2AB85EA20005647F /* PictureCell.swift in Sources */,
 				3F3862732AB29E4800479E4C /* ProfileDesignViewController.swift in Sources */,
 				3F0C505C2AB4284100F9D398 /* BucketListViewModel.swift in Sources */,
 				3F38626F2AB29CD800479E4C /* BucketListViewController.swift in Sources */,

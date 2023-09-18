@@ -9,14 +9,16 @@ import UIKit
 
 class ProfileDesignViewController: UIViewController {
     private let profileDesignView = ProfileDesignView()
-    var pictures = [
-        UIImage(named: "1"),
-        UIImage(named: "2"),
-        UIImage(named: "3"),
-        UIImage(named: "4"),
-        UIImage(named: "5"),
-        UIImage(named: "6"),
-        UIImage(named: "7"),
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var pictures: [UIImage] = [
+        UIImage(named: "1")!,
+        UIImage(named: "2")!,
+        UIImage(named: "3")!,
+        UIImage(named: "4")!,
+        UIImage(named: "5")!,
+        UIImage(named: "6")!,
+        UIImage(named: "7")!,
     ]
 
     override func viewDidLoad() {
@@ -41,15 +43,30 @@ private extension ProfileDesignViewController {
 
 extension ProfileDesignViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pictures.count
+        return self.pictures.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureCell", for: indexPath)
-        let img = pictures[indexPath.row]
-        cell.contentMode = .scaleAspectFill
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PictureCell.identifier, for: indexPath) as? PictureCell else {
+            fatalError("Error")
+        }
+        let img = self.pictures[indexPath.row]
+        cell.configure(img)
         return cell
     }
+}
+
+extension ProfileDesignViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = (self.view.frame.width/3)-1.34
+        return CGSize(width: size, height: size)
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
 }
