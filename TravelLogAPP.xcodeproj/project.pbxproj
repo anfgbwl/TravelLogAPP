@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F0C504F2AB2DA6800F9D398 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C504D2AB2DA6800F9D398 /* Task+CoreDataClass.swift */; };
 		3F0C50582AB420F300F9D398 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C50572AB420F300F9D398 /* MainView.swift */; };
 		3F0C505A2AB4268900F9D398 /* BucketListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C50592AB4268900F9D398 /* BucketListView.swift */; };
 		3F0C505C2AB4284100F9D398 /* BucketListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C505B2AB4284100F9D398 /* BucketListViewModel.swift */; };
@@ -15,6 +14,7 @@
 		3F0C50602AB44FC700F9D398 /* CompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C505F2AB44FC700F9D398 /* CompleteView.swift */; };
 		3F0C50622AB4517000F9D398 /* CompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C50612AB4517000F9D398 /* CompleteViewModel.swift */; };
 		3F0C50642AB4543200F9D398 /* ProfileDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C50632AB4543200F9D398 /* ProfileDesignView.swift */; };
+		3F0C506F2AB7D4D100F9D398 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0C506B2AB7D4D100F9D398 /* Task+CoreDataClass.swift */; };
 		3F3862582AB29BFB00479E4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3862572AB29BFB00479E4C /* AppDelegate.swift */; };
 		3F38625A2AB29BFB00479E4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3862592AB29BFB00479E4C /* SceneDelegate.swift */; };
 		3F38625C2AB29BFB00479E4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38625B2AB29BFB00479E4C /* ViewController.swift */; };
@@ -25,10 +25,10 @@
 		3F3862712AB29DF400479E4C /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3862702AB29DF400479E4C /* CompleteViewController.swift */; };
 		3F3862732AB29E4800479E4C /* ProfileDesignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3862722AB29E4800479E4C /* ProfileDesignViewController.swift */; };
 		3F3862762AB2A07A00479E4C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3862752AB2A07A00479E4C /* SnapKit */; };
+		3F705C482AB7D6990005647F /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C462AB7D6990005647F /* User+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F0C504D2AB2DA6800F9D398 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3F0C50572AB420F300F9D398 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3F0C50592AB4268900F9D398 /* BucketListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListView.swift; sourceTree = "<group>"; };
 		3F0C505B2AB4284100F9D398 /* BucketListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListViewModel.swift; sourceTree = "<group>"; };
@@ -36,6 +36,7 @@
 		3F0C505F2AB44FC700F9D398 /* CompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteView.swift; sourceTree = "<group>"; };
 		3F0C50612AB4517000F9D398 /* CompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewModel.swift; sourceTree = "<group>"; };
 		3F0C50632AB4543200F9D398 /* ProfileDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDesignView.swift; sourceTree = "<group>"; };
+		3F0C506B2AB7D4D100F9D398 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3F3862542AB29BFB00479E4C /* TravelLogAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelLogAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3862572AB29BFB00479E4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F3862592AB29BFB00479E4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		3F38626E2AB29CD800479E4C /* BucketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListViewController.swift; sourceTree = "<group>"; };
 		3F3862702AB29DF400479E4C /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		3F3862722AB29E4800479E4C /* ProfileDesignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDesignViewController.swift; sourceTree = "<group>"; };
+		3F705C462AB7D6990005647F /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +66,8 @@
 		3F0C504C2AB2D89900F9D398 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3F0C504D2AB2DA6800F9D398 /* Task+CoreDataClass.swift */,
+				3F0C506B2AB7D4D100F9D398 /* Task+CoreDataClass.swift */,
+				3F705C462AB7D6990005647F /* User+CoreDataClass.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,13 +230,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F0C505A2AB4268900F9D398 /* BucketListView.swift in Sources */,
+				3F0C506F2AB7D4D100F9D398 /* Task+CoreDataClass.swift in Sources */,
 				3F38625C2AB29BFB00479E4C /* ViewController.swift in Sources */,
 				3F0C50642AB4543200F9D398 /* ProfileDesignView.swift in Sources */,
 				3F0C50582AB420F300F9D398 /* MainView.swift in Sources */,
 				3F0C50622AB4517000F9D398 /* CompleteViewModel.swift in Sources */,
+				3F705C482AB7D6990005647F /* User+CoreDataClass.swift in Sources */,
 				3F0C50602AB44FC700F9D398 /* CompleteView.swift in Sources */,
 				3F3862582AB29BFB00479E4C /* AppDelegate.swift in Sources */,
-				3F0C504F2AB2DA6800F9D398 /* Task+CoreDataClass.swift in Sources */,
 				3F0C505E2AB43E2200F9D398 /* BucketListCell.swift in Sources */,
 				3F3862622AB29BFB00479E4C /* TravelLogAPP.xcdatamodeld in Sources */,
 				3F3862732AB29E4800479E4C /* ProfileDesignViewController.swift in Sources */,

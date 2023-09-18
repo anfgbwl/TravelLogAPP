@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class BucketListViewModel {
-    private let bucketListView = BucketListView()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var bucketList: [Task]?
     var tableViewReloadHandler: (() -> Void)?

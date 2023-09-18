@@ -13,7 +13,7 @@ class CompleteViewModel {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var completedList: [Task]?
     var tableViewReloadHandler: (() -> Void)?
-    
+
     func fetchCompletedBucketList() {
         let request = Task.fetchRequest()
 

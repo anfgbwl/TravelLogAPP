@@ -10,11 +10,155 @@ import UIKit
 
 class ProfileDesignView: UIView {
     let backButton: UIButton = {
-        let backButton = UIButton()
-        backButton.setImage(UIImage(systemName: "x.circle.fill"), for: .normal)
-        backButton.tintColor = .systemGray2
-        return backButton
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "x.circle.fill"), for: .normal)
+        button.tintColor = .systemGray2
+        return button
     }()
+    
+    let userId: UILabel = {
+        let label = UILabel()
+        label.text = "nabaecamp"
+        label.font = UIFont(name: "NotoSansKR-Bold", size: 18)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let menuButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Menu"), for: .normal)
+        return button
+    }()
+    
+    let userPic: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "profileImage")
+        iv.contentMode = .scaleAspectFill
+        iv.layer.cornerRadius = 44
+        iv.clipsToBounds = true
+        return iv
+    }()
+    
+    let postCount: UILabel = {
+        let label = UILabel()
+        label.text = "7"
+        label.font = UIFont(name: "NotoSansKR-Bold", size: 16.5)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private let post: UILabel = {
+        let label = UILabel()
+        label.text = "post"
+        label.font = UIFont(name: "NotoSansKR-Regular", size: 14)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let followerCount: UILabel = {
+        let label = UILabel()
+        label.text = "0"
+        label.font = UIFont(name: "NotoSansKR-Bold", size: 16.5)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private let follower: UILabel = {
+        let label = UILabel()
+        label.text = "follower"
+        label.font = UIFont(name: "NotoSansKR-Regular", size: 14)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let followingCount: UILabel = {
+        let label = UILabel()
+        label.text = "0"
+        label.font = UIFont(name: "NotoSansKR-Bold", size: 16.5)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private let following: UILabel = {
+        let label = UILabel()
+        label.text = "following"
+        label.font = UIFont(name: "NotoSansKR-Regular", size: 14)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var postStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [postCount, post])
+        sv.axis = .vertical
+        sv.alignment = .center
+        sv.spacing = 0
+        return sv
+    }()
+    
+    private lazy var followerStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [followerCount, follower])
+        sv.axis = .vertical
+        sv.alignment = .center
+        sv.spacing = 0
+        return sv
+    }()
+    
+    private lazy var followingStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [followingCount, following])
+        sv.axis = .vertical
+        sv.alignment = .center
+        sv.spacing = 0
+        return sv
+    }()
+    
+    private lazy var userFollowInfo: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [postStackView, followerStackView, followingStackView])
+        sv.axis = .horizontal
+        sv.alignment = .center
+        sv.distribution = .fillEqually
+        return sv
+    }()
+    
+    let userName: UILabel = {
+        let label = UILabel()
+        label.text = "르탄이"
+        label.font = UIFont(name: "NotoSansKR-Bold", size: 14)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    let bio: UILabel = {
+        let label = UILabel()
+        label.text = "iOS Developer 🍎"
+        label.font = UIFont(name: "NotoSansKR-Regular", size: 14)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    let linkInbio: UILabel = {
+        let label = UILabel()
+        label.text = "spartacodingclub.kr"
+        label.font = UIFont(name: "NotoSansKR-Regular", size: 14)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private lazy var bioStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [bio, linkInbio])
+        sv.axis = .vertical
+        sv.alignment = .leading
+        sv.spacing = 0
+        return sv
+    }()
+    
+    private lazy var userInfo: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [userName, bioStackView])
+        sv.axis = .vertical
+        sv.alignment = .leading
+        sv.spacing = 2
+        return sv
+    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,6 +166,7 @@ class ProfileDesignView: UIView {
         setupUI()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -30,10 +175,42 @@ class ProfileDesignView: UIView {
         backgroundColor = .white
         
         addSubview(backButton)
+        addSubview(userId)
+        addSubview(menuButton)
+        addSubview(userPic)
+        addSubview(userFollowInfo)
+        addSubview(userInfo)
         
         backButton.snp.makeConstraints { make in
-            make.top.equalTo(80)
-            make.leading.equalTo(30)
+            make.centerY.equalTo(userId)
+            make.leading.equalTo(18)
+        }
+        
+        userId.snp.makeConstraints { make in
+            make.top.equalTo(54)
+            make.centerX.equalToSuperview()
+        }
+        
+        menuButton.snp.makeConstraints { make in
+            make.centerY.equalTo(userId)
+            make.trailing.equalTo(-16)
+        }
+        
+        userPic.snp.makeConstraints { make in
+            make.top.equalTo(userId.snp.bottom).offset(14)
+            make.leading.equalTo(14)
+            make.width.height.equalTo(88)
+        }
+        
+        userFollowInfo.snp.makeConstraints { make in
+            make.centerY.equalTo(userPic)
+            make.leading.equalTo(userPic.snp.trailing).offset(41)
+            make.trailing.equalTo(-28)
+        }
+        
+        userInfo.snp.makeConstraints { make in
+            make.top.equalTo(userPic.snp.bottom).offset(14)
+            make.leading.trailing.equalTo(15)
         }
     }
 }
