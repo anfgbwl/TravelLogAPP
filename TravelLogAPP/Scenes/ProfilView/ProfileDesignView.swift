@@ -10,10 +10,10 @@ import UIKit
 
 class ProfileDesignView: UIView {
     let backButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "x.circle.fill"), for: .normal)
-        button.tintColor = .systemGray2
-        return button
+        let btn = UIButton()
+        btn.setImage(UIImage(systemName: "x.circle.fill"), for: .normal)
+        btn.tintColor = .systemGray2
+        return btn
     }()
     
     let userId: UILabel = {
@@ -25,9 +25,9 @@ class ProfileDesignView: UIView {
     }()
     
     let menuButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "Menu"), for: .normal)
-        return button
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "Menu"), for: .normal)
+        return btn
     }()
     
     let userPic: UIImageView = {
@@ -159,6 +159,54 @@ class ProfileDesignView: UIView {
         return sv
     }()
     
+    let followButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Follow", for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        btn.backgroundColor = .link
+        btn.layer.cornerRadius = 5
+        return btn
+    }()
+    
+    let messageButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Message", for: .normal)
+        btn.setTitleColor(UIColor.black, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        btn.layer.borderWidth = 2
+        btn.layer.borderColor = UIColor.systemGray2.cgColor
+        btn.layer.cornerRadius = 5
+        return btn
+    }()
+    
+    let moreButton: UIButton = {
+        let btn = UIButton()
+        let image = UIImage(named: "More")
+        btn.setImage(image, for: .normal)
+        btn.tintColor = .black
+        btn.backgroundColor = .white
+        btn.layer.borderWidth = 2
+        btn.layer.borderColor = UIColor.systemGray2.cgColor
+        btn.layer.cornerRadius = 5
+        return btn
+    }()
+    
+    private lazy var middleBar: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [followButton, messageButton, moreButton])
+        sv.axis = .horizontal
+        sv.alignment = .center
+        sv.spacing = 8
+        sv.distribution = .fill
+    
+        moreButton.snp.makeConstraints { make in
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+        }
+        followButton.snp.makeConstraints { make in
+            make.width.equalTo(messageButton)
+        }
+        return sv
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -180,6 +228,7 @@ class ProfileDesignView: UIView {
         addSubview(userPic)
         addSubview(userFollowInfo)
         addSubview(userInfo)
+        addSubview(middleBar)
         
         backButton.snp.makeConstraints { make in
             make.centerY.equalTo(userId)
@@ -211,6 +260,13 @@ class ProfileDesignView: UIView {
         userInfo.snp.makeConstraints { make in
             make.top.equalTo(userPic.snp.bottom).offset(14)
             make.leading.trailing.equalTo(15)
+        }
+        
+        middleBar.snp.makeConstraints { make in
+            make.top.equalTo(userInfo.snp.bottom).offset(11)
+            make.leading.equalTo(15)
+            make.trailing.equalTo(-15)
+            make.height.equalTo(30)
         }
     }
 }
