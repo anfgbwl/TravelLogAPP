@@ -236,6 +236,18 @@ class ProfileDesignView: UIView {
         return cv
     }()
     
+    private let navBar: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 255)
+        return view
+    }()
+    
+    let profile: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "Profile - Fill"))
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -260,6 +272,8 @@ class ProfileDesignView: UIView {
         addSubview(grid)
         addSubview(sectionIndocator)
         addSubview(collectionView)
+        addSubview(navBar)
+        addSubview(profile)
         
         backButton.snp.makeConstraints { make in
             make.centerY.equalTo(userId)
@@ -322,7 +336,18 @@ class ProfileDesignView: UIView {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(sectionIndocator.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(380)
+            make.bottom.equalTo(navBar.snp.top)
+        }
+        
+        navBar.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(85)
+        }
+        
+        profile.snp.makeConstraints { make in
+            make.top.equalTo(navBar.snp.top).offset(19)
+            make.centerX.equalToSuperview()
         }
     }
 }
