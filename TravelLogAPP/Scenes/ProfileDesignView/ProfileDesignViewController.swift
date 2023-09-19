@@ -9,24 +9,7 @@ import UIKit
 
 class ProfileDesignViewController: UIViewController {
     private let profileDesignView = ProfileDesignView()
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    var pictures: [UIImage] = [
-        UIImage(named: "1")!,
-        UIImage(named: "2")!,
-        UIImage(named: "3")!,
-        UIImage(named: "4")!,
-        UIImage(named: "5")!,
-        UIImage(named: "6")!,
-        UIImage(named: "7")!,
-        UIImage(named: "1")!,
-        UIImage(named: "2")!,
-        UIImage(named: "3")!,
-        UIImage(named: "4")!,
-        UIImage(named: "5")!,
-        UIImage(named: "6")!,
-        UIImage(named: "7")!,
-    ]
+    private let viewModel = ProfileDesignViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +33,14 @@ private extension ProfileDesignViewController {
 
 extension ProfileDesignViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.pictures.count
+        return viewModel.pictures.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PictureCell.identifier, for: indexPath) as? PictureCell else {
             fatalError("Error")
         }
-        let img = self.pictures[indexPath.row]
+        let img = viewModel.pictures[indexPath.row]
         cell.configure(img)
         return cell
     }
