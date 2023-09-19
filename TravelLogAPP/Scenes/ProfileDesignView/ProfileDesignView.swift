@@ -245,6 +245,7 @@ class ProfileDesignView: UIView {
     let profile: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "Profile - Fill"))
         iv.contentMode = .scaleAspectFill
+        iv.isUserInteractionEnabled = true
         return iv
     }()
     

@@ -42,7 +42,7 @@ private extension ViewController {
         navigationController?.pushViewController(CompleteVC, animated: true)
     }
 
-    @objc func mainToProfileVC(_ sender: UITapGestureRecognizer) {
+    @objc func mainToProfileVC() {
         let ProfileVC = ProfileDesignViewController()
         ProfileVC.modalPresentationStyle = .fullScreen
         present(ProfileVC, animated: true, completion: nil)

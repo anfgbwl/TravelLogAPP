@@ -24,10 +24,16 @@ private extension ProfileDesignViewController {
         profileDesignView.collectionView.delegate = self
         profileDesignView.collectionView.dataSource = self
         profileDesignView.backButton.addTarget(self, action: #selector(setBackButton), for: .touchUpInside)
+        profileDesignView.profile.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileDesignToProfileVC)))
     }
-    
+
     @objc func setBackButton() {
-        self.dismiss(animated: true)
+        dismiss(animated: true)
+    }
+
+    @objc func profileDesignToProfileVC() {
+        let ProfileVC = ProfileViewController()
+        present(ProfileVC, animated: true, completion: nil)
     }
 }
 
@@ -35,7 +41,7 @@ extension ProfileDesignViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.pictures.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PictureCell.identifier, for: indexPath) as? PictureCell else {
             fatalError("Error")
@@ -48,14 +54,14 @@ extension ProfileDesignViewController: UICollectionViewDelegate, UICollectionVie
 
 extension ProfileDesignViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = (self.view.frame.width/3)-1.34
+        let size = (view.frame.width / 3) - 1.34
         return CGSize(width: size, height: size)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 2
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 2
     }
