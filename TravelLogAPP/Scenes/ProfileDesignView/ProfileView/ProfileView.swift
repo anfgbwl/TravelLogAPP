@@ -33,7 +33,7 @@ class ProfileView: UIView {
         return btn
     }()
     
-    private let profilePic: UIImageView = {
+    let profilePic: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "profileImage")
         iv.contentMode = .scaleAspectFill
@@ -269,5 +269,14 @@ class ProfileView: UIView {
             make.top.equalTo(edit.snp.bottom).offset(30)
             make.leading.trailing.equalTo(18)
         }
+    }
+
+    func setUserInfo(_ user: User) {
+        inputUserName.text = user.userName
+        inputId.text = user.id
+        inputNickname.text = user.nickname
+        inputUserAge.text = String(user.userAge)
+        inputBio.text = user.bio
+        inputLinkInBio.text = user.linkInBio
     }
 }

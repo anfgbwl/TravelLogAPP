@@ -27,9 +27,10 @@
 		3F3862762AB2A07A00479E4C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F3862752AB2A07A00479E4C /* SnapKit */; };
 		3F705C4B2AB84A910005647F /* ProfileDesignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C4A2AB84A910005647F /* ProfileDesignViewModel.swift */; };
 		3F705C4D2AB85EA20005647F /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C4C2AB85EA20005647F /* PictureCell.swift */; };
-		3F705C502AB921FC0005647F /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C4E2AB921FC0005647F /* User+CoreDataClass.swift */; };
 		3F705C542AB922C10005647F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C532AB922C10005647F /* ProfileViewController.swift */; };
 		3F705C562AB923070005647F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C552AB923070005647F /* ProfileView.swift */; };
+		3F705C582AB960DD0005647F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C572AB960DD0005647F /* ProfileViewModel.swift */; };
+		3F705C632AB969C40005647F /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C612AB969C40005647F /* User+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,9 +55,10 @@
 		3F3862722AB29E4800479E4C /* ProfileDesignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDesignViewController.swift; sourceTree = "<group>"; };
 		3F705C4A2AB84A910005647F /* ProfileDesignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDesignViewModel.swift; sourceTree = "<group>"; };
 		3F705C4C2AB85EA20005647F /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
-		3F705C4E2AB921FC0005647F /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3F705C532AB922C10005647F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3F705C552AB923070005647F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		3F705C572AB960DD0005647F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		3F705C612AB969C40005647F /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				3F0C506B2AB7D4D100F9D398 /* Task+CoreDataClass.swift */,
-				3F705C4E2AB921FC0005647F /* User+CoreDataClass.swift */,
+				3F705C612AB969C40005647F /* User+CoreDataClass.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				3F705C552AB923070005647F /* ProfileView.swift */,
+				3F705C572AB960DD0005647F /* ProfileViewModel.swift */,
 				3F705C532AB922C10005647F /* ProfileViewController.swift */,
 			);
 			path = ProfileView;
@@ -255,6 +258,7 @@
 				3F38625C2AB29BFB00479E4C /* ViewController.swift in Sources */,
 				3F0C50642AB4543200F9D398 /* ProfileDesignView.swift in Sources */,
 				3F0C50582AB420F300F9D398 /* MainView.swift in Sources */,
+				3F705C582AB960DD0005647F /* ProfileViewModel.swift in Sources */,
 				3F0C50622AB4517000F9D398 /* CompleteViewModel.swift in Sources */,
 				3F0C50602AB44FC700F9D398 /* CompleteView.swift in Sources */,
 				3F3862582AB29BFB00479E4C /* AppDelegate.swift in Sources */,
@@ -265,10 +269,10 @@
 				3F705C4D2AB85EA20005647F /* PictureCell.swift in Sources */,
 				3F3862732AB29E4800479E4C /* ProfileDesignViewController.swift in Sources */,
 				3F0C505C2AB4284100F9D398 /* BucketListViewModel.swift in Sources */,
-				3F705C502AB921FC0005647F /* User+CoreDataClass.swift in Sources */,
 				3F38626F2AB29CD800479E4C /* BucketListViewController.swift in Sources */,
 				3F38625A2AB29BFB00479E4C /* SceneDelegate.swift in Sources */,
 				3F3862712AB29DF400479E4C /* CompleteViewController.swift in Sources */,
+				3F705C632AB969C40005647F /* User+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

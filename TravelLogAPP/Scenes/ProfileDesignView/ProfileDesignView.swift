@@ -16,7 +16,7 @@ class ProfileDesignView: UIView {
         return btn
     }()
     
-    let userId: UILabel = {
+    var userId: UILabel = {
         let label = UILabel()
         label.text = "nabaecamp"
         label.font = UIFont(name: "NotoSansKR-Bold", size: 18)
@@ -30,7 +30,7 @@ class ProfileDesignView: UIView {
         return btn
     }()
     
-    let userPic: UIImageView = {
+    var userPic: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "profileImage")
         iv.contentMode = .scaleAspectFill
@@ -39,7 +39,7 @@ class ProfileDesignView: UIView {
         return iv
     }()
     
-    let postCount: UILabel = {
+    var postCount: UILabel = {
         let label = UILabel()
         label.text = "7"
         label.font = UIFont(name: "NotoSansKR-Bold", size: 16.5)
@@ -55,7 +55,7 @@ class ProfileDesignView: UIView {
         return label
     }()
     
-    let followerCount: UILabel = {
+    var followerCount: UILabel = {
         let label = UILabel()
         label.text = "0"
         label.font = UIFont(name: "NotoSansKR-Bold", size: 16.5)
@@ -71,7 +71,7 @@ class ProfileDesignView: UIView {
         return label
     }()
     
-    let followingCount: UILabel = {
+    var followingCount: UILabel = {
         let label = UILabel()
         label.text = "0"
         label.font = UIFont(name: "NotoSansKR-Bold", size: 16.5)
@@ -119,7 +119,7 @@ class ProfileDesignView: UIView {
         return sv
     }()
     
-    let userName: UILabel = {
+    var nickname: UILabel = {
         let label = UILabel()
         label.text = "르탄이"
         label.font = UIFont(name: "NotoSansKR-Bold", size: 14)
@@ -127,7 +127,7 @@ class ProfileDesignView: UIView {
         return label
     }()
     
-    let bio: UILabel = {
+    var bio: UILabel = {
         let label = UILabel()
         label.text = "iOS Developer 🍎"
         label.font = UIFont(name: "NotoSansKR-Regular", size: 14)
@@ -135,7 +135,7 @@ class ProfileDesignView: UIView {
         return label
     }()
     
-    let linkInbio: UILabel = {
+    var linkInBio: UILabel = {
         let label = UILabel()
         label.text = "spartacodingclub.kr"
         label.font = UIFont(name: "NotoSansKR-Regular", size: 14)
@@ -144,7 +144,7 @@ class ProfileDesignView: UIView {
     }()
     
     private lazy var bioStackView: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [bio, linkInbio])
+        let sv = UIStackView(arrangedSubviews: [bio, linkInBio])
         sv.axis = .vertical
         sv.alignment = .leading
         sv.spacing = 0
@@ -152,7 +152,7 @@ class ProfileDesignView: UIView {
     }()
     
     private lazy var userInfo: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [userName, bioStackView])
+        let sv = UIStackView(arrangedSubviews: [nickname, bioStackView])
         sv.axis = .vertical
         sv.alignment = .leading
         sv.spacing = 2
@@ -350,5 +350,20 @@ class ProfileDesignView: UIView {
             make.top.equalTo(navBar.snp.top).offset(19)
             make.centerX.equalToSuperview()
         }
+    }
+    
+    func setUserInfo(_ user: User) {
+        userId.text = user.id
+        if let imageData = user.userPicture {
+            if let img = UIImage(data: imageData) {
+                userPic.image = img
+            }
+        }
+        postCount.text = String(user.postCount)
+        followerCount.text = String(user.followerCount)
+        followingCount.text = String(user.followingCount)
+        nickname.text = user.nickname
+        bio.text = user.bio
+        linkInBio.text = user.linkInBio
     }
 }
