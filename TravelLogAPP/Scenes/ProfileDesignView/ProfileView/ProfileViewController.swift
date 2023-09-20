@@ -5,6 +5,7 @@
 //  Created by t2023-m0076 on 2023/09/19.
 //
 
+import PhotosUI
 import UIKit
 
 class ProfileViewController: UIViewController {
@@ -23,14 +24,10 @@ class ProfileViewController: UIViewController {
 
 private extension ProfileViewController {
     func setup() {
-//        viewModel.viewReloadHandler = { [weak self] in
-//            if let user = self?.viewModel.user {
-//                self?.profileView.setUserInfo(user)
-//            }
-//        }
         view = profileView
         profileView.cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
         profileView.saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+        profileView.edit.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editProfilePicture)))
     }
 
     func setUserInfo() {
@@ -45,7 +42,7 @@ private extension ProfileViewController {
         profileView.inputBio.text = user?.bio
         profileView.inputLinkInBio.text = user?.linkInBio
     }
-    
+
     @objc func didTapCancelButton() {
         dismiss(animated: true)
     }
@@ -58,10 +55,18 @@ private extension ProfileViewController {
             self.dismiss(animated: true)
         }
     }
+
+    @objc func editProfilePicture() {
+        var configuration = PHPickerConfiguration()
+        configuration.filter = .images
+        configuration.selectionLimit = 1
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true, completion: nil)
+    }
 }
 
 extension ProfileViewController {
-    
     func fetchUserInfo() {
         let request = User.fetchRequest()
 
@@ -74,7 +79,7 @@ extension ProfileViewController {
             print("🚨 Error: Fetch User Info")
         }
     }
-    
+
     func updateUserInfo() {
         if let pic = profileView.profilePic.image {
             if let imageData = pic.jpegData(compressionQuality: 1.0) {
@@ -94,6 +99,26 @@ extension ProfileViewController {
             try context.save()
         } catch {
             print("🚨 Error: Save User Info")
+        }
+    }
+}
+
+extension ProfileViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true, completion: nil)
+
+        guard let selectedImage = results.first?.itemProvider else {
+            return
+        }
+
+        selectedImage.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+            if let error = error {
+                print("Error loading image: \(error.localizedDescription)")
+            } else if let image = image as? UIImage {
+                DispatchQueue.main.async {
+                    self?.profileView.profilePic.image = image
+                }
+            }
         }
     }
 }

@@ -42,12 +42,13 @@ class ProfileView: UIView {
         return iv
     }()
     
-    private let edit: UILabel = {
+    let edit: UILabel = {
         let label = UILabel()
         label.text = "Edit profile picture"
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .link
         label.textAlignment = .center
+        label.isUserInteractionEnabled = true
         return label
     }()
     
