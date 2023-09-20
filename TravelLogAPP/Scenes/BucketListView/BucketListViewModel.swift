@@ -24,8 +24,9 @@ class BucketListViewModel {
         }
     }
 
-    func addBucketListItem(_ title: String) {
+    func addBucketListItem(_ title: String, _ taskId: String) {
         let newBucketList = Task(context: context)
+        newBucketList.id = UUID(uuidString: taskId)
         newBucketList.title = title
         newBucketList.createDate = Date()
         newBucketList.isCompleted = false

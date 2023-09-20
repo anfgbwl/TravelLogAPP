@@ -57,7 +57,8 @@ private extension BucketListViewController {
         }
         let add = UIAlertAction(title: "Add", style: .default) { _ in
             if let textField = alert.textFields?.first, let title = textField.text {
-                self.viewModel.addBucketListItem(title)
+                let taskId = UUID().uuidString
+                self.viewModel.addBucketListItem(title, taskId)
                 self.viewModel.fetchBucketList()
             }
         }
