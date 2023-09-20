@@ -10,9 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     private let profileView = ProfileView()
-//    private let viewModel = ProfileViewModel()
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var user: User?
+    private let viewModel = ProfileViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,16 +29,16 @@ private extension ProfileViewController {
     }
 
     func setUserInfo() {
-        fetchUserInfo()
-        if let userPictureData = user?.userPicture {
+        viewModel.fetchUserInfo()
+        if let userPictureData = viewModel.user?.userPicture {
             profileView.profilePic.image = UIImage(data: userPictureData)
         }
-        profileView.inputUserName.text = user?.userName
-        profileView.inputId.text = user?.id
-        profileView.inputNickname.text = user?.nickname
-        profileView.inputUserAge.text = String(Int(user?.userAge ?? 0))
-        profileView.inputBio.text = user?.bio
-        profileView.inputLinkInBio.text = user?.linkInBio
+        profileView.inputUserName.text = viewModel.user?.userName
+        profileView.inputId.text = viewModel.user?.id
+        profileView.inputNickname.text = viewModel.user?.nickname
+        profileView.inputUserAge.text = String(Int(viewModel.user?.userAge ?? 0))
+        profileView.inputBio.text = viewModel.user?.bio
+        profileView.inputLinkInBio.text = viewModel.user?.linkInBio
     }
 
     @objc func didTapCancelButton() {
@@ -49,7 +47,7 @@ private extension ProfileViewController {
 
     @objc func didTapSaveButton() {
         updateUserInfo()
-        NotificationCenter.default.post(name: NSNotification.Name("UpdateUserInfoNotification"), object: user)
+        NotificationCenter.default.post(name: NSNotification.Name("UpdateUserInfoNotification"), object: viewModel.user)
         print("Post UpdateUserInfoNotification")
         DispatchQueue.main.async {
             self.dismiss(animated: true)
@@ -67,39 +65,22 @@ private extension ProfileViewController {
 }
 
 extension ProfileViewController {
-    func fetchUserInfo() {
-        let request = User.fetchRequest()
-
-        do {
-            let users = try context.fetch(request)
-            if let firstUser = users.first {
-                user = firstUser
-            }
-        } catch {
-            print("🚨 Error: Fetch User Info")
-        }
-    }
-
     func updateUserInfo() {
         if let pic = profileView.profilePic.image {
             if let imageData = pic.jpegData(compressionQuality: 1.0) {
-                user?.userPicture = imageData
+                viewModel.user?.userPicture = imageData
             }
         }
-        user?.userName = profileView.inputUserName.text
-        user?.id = profileView.inputId.text
-        user?.nickname = profileView.inputNickname.text
+        viewModel.user?.userName = profileView.inputUserName.text
+        viewModel.user?.id = profileView.inputId.text
+        viewModel.user?.nickname = profileView.inputNickname.text
         if let ageText = profileView.inputUserAge.text, let age = Int(ageText) {
-            user?.userAge = Int64(age)
+            viewModel.user?.userAge = Int64(age)
         }
-        user?.bio = profileView.inputBio.text
-        user?.linkInBio = profileView.inputLinkInBio.text
+        viewModel.user?.bio = profileView.inputBio.text
+        viewModel.user?.linkInBio = profileView.inputLinkInBio.text
 
-        do {
-            try context.save()
-        } catch {
-            print("🚨 Error: Save User Info")
-        }
+        viewModel.saveUserInfo()
     }
 }
 
