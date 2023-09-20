@@ -18,9 +18,15 @@ class BucketListView: UIView {
     }()
 
     let addButton: UIBarButtonItem = {
-        let addButton = UIBarButtonItem()
-        addButton.image = UIImage(systemName: "plus.circle.fill")
-        return addButton
+        let btn = UIBarButtonItem()
+        btn.image = UIImage(systemName: "plus.circle.fill")
+        return btn
+    }()
+    
+    let addCategory: UIBarButtonItem = {
+        let btn = UIBarButtonItem()
+        btn.image = UIImage(systemName: "folder.fill.badge.plus")
+        return btn
     }()
 
     override init(frame: CGRect) {
@@ -34,10 +40,11 @@ class BucketListView: UIView {
     }
 
     private func setupUI() {
+        backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 255)
         addSubview(tableView)
 
         tableView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.top.leading.bottom.trailing.equalToSuperview()
         }
     }
 }

@@ -45,7 +45,7 @@ private extension BucketListViewController {
     
     func setupNavigationItem() {
         navigationItem.title = "✍🏻 Bucket List ✍🏻"
-        navigationItem.rightBarButtonItem = bucketListView.addButton
+        navigationItem.rightBarButtonItems = [bucketListView.addButton, bucketListView.addCategory]
     }
 }
 
@@ -86,26 +86,31 @@ extension BucketListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectTask = viewModel.bucketList![indexPath.row]
         
-        let alert = UIAlertController(title: "Edit Bucket List",
-                                      message: "\nCreate Date: \(viewModel.formattedDate(from: selectTask.createDate))\nModify Date: \(viewModel.formattedDate(from: selectTask.modifyDate))\n",
-                                      preferredStyle: .alert)
-        alert.addTextField()
+        let EditVC = EditViewController()
+        EditVC.task = selectTask
+        present(EditVC, animated: true, completion: nil)
         
-        let textField = alert.textFields![0]
-        textField.text = selectTask.title
-        
-        let save = UIAlertAction(title: "Save", style: .default) { _ in
-            if let textField = alert.textFields?.first, let title = textField.text {
-                self.viewModel.editBucketListItem(selectTask, title)
-                self.viewModel.fetchBucketList()
-            }
-        }
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-        
-        alert.addAction(save)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
+//
+//        let alert = UIAlertController(title: "Edit Bucket List",
+//                                      message: "\nCreate Date: \(viewModel.formattedDate(from: selectTask.createDate))\nModify Date: \(viewModel.formattedDate(from: selectTask.modifyDate))\n",
+//                                      preferredStyle: .alert)
+//        alert.addTextField()
+//
+//        let textField = alert.textFields![0]
+//        textField.text = selectTask.title
+//
+//        let save = UIAlertAction(title: "Save", style: .default) { _ in
+//            if let textField = alert.textFields?.first, let title = textField.text {
+//                self.viewModel.editBucketListItem(selectTask, title)
+//                self.viewModel.fetchBucketList()
+//            }
+//        }
+//
+//        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+//
+//        alert.addAction(save)
+//        alert.addAction(cancel)
+//        present(alert, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

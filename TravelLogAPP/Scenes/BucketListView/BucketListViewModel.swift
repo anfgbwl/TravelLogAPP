@@ -11,6 +11,7 @@ import UIKit
 class BucketListViewModel {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var bucketList: [Task]?
+    var caterogories: [Category]?
     var tableViewReloadHandler: (() -> Void)?
 
     func fetchBucketList() {
@@ -30,6 +31,10 @@ class BucketListViewModel {
         newBucketList.title = title
         newBucketList.createDate = Date()
         newBucketList.isCompleted = false
+
+        CategoryManager.shared.addCategory("Unspecified")
+        let unspecifiedCategory = CategoryManager.shared.getCategory(withTitle: "Unspecified")
+        unspecifiedCategory?.addToTask(newBucketList)
 
         do {
             try context.save()
