@@ -9,19 +9,7 @@ import UIKit
 
 class ProfileDesignViewController: UIViewController {
     private let profileDesignView = ProfileDesignView()
-//    private let viewModel = ProfileDesignViewModel()
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//    var viewReloadHandler: (() -> Void)?
-    var user: User?
-    var pictures: [UIImage] = [
-        UIImage(named: "1")!,
-        UIImage(named: "2")!,
-        UIImage(named: "3")!,
-        UIImage(named: "4")!,
-        UIImage(named: "5")!,
-        UIImage(named: "6")!,
-        UIImage(named: "7")!,
-    ]
+    private let viewModel = ProfileDesignViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,17 +30,17 @@ private extension ProfileDesignViewController {
     }
     
     func setUserInfo() {
-        fetchUserInfo()
-        profileDesignView.userId.text = user?.id
-        if let userPictureData = user?.userPicture {
+        viewModel.fetchUserInfo()
+        profileDesignView.userId.text = viewModel.user?.id
+        if let userPictureData = viewModel.user?.userPicture {
             profileDesignView.userPic.image = UIImage(data: userPictureData)
         }
-        profileDesignView.postCount.text = String(pictures.count)
-        profileDesignView.followerCount.text = String(Int(user?.followerCount ?? 0))
-        profileDesignView.followingCount.text = String(Int(user?.followingCount ?? 0))
-        profileDesignView.nickname.text = user?.nickname
-        profileDesignView.bio.text = user?.bio
-        profileDesignView.linkInBio.text = user?.linkInBio
+        profileDesignView.postCount.text = String(viewModel.pictures.count)
+        profileDesignView.followerCount.text = String(Int(viewModel.user?.followerCount ?? 0))
+        profileDesignView.followingCount.text = String(Int(viewModel.user?.followingCount ?? 0))
+        profileDesignView.nickname.text = viewModel.user?.nickname
+        profileDesignView.bio.text = viewModel.user?.bio
+        profileDesignView.linkInBio.text = viewModel.user?.linkInBio
     }
 
     @objc func setBackButton() {
@@ -73,14 +61,14 @@ private extension ProfileDesignViewController {
 
 extension ProfileDesignViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pictures.count
+        return viewModel.pictures.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PictureCell.identifier, for: indexPath) as? PictureCell else {
             fatalError("Error")
         }
-        let img = pictures[indexPath.row]
+        let img = viewModel.pictures[indexPath.row]
         cell.configure(img)
         return cell
     }
@@ -98,21 +86,5 @@ extension ProfileDesignViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 2
-    }
-}
-
-extension ProfileDesignViewController {
-    
-    func fetchUserInfo() {
-        let request = User.fetchRequest()
-
-        do {
-            let users = try context.fetch(request)
-            if let firstUser = users.first {
-                user = firstUser
-            }
-        } catch {
-            print("🚨 Error: Fetch User Info")
-        }
     }
 }
