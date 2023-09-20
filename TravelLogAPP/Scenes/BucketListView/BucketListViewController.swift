@@ -41,6 +41,7 @@ private extension BucketListViewController {
         bucketListView.tableView.delegate = self
         bucketListView.addButton.target = self
         bucketListView.addButton.action = #selector(didTapAddButton)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTaskInfo), name: NSNotification.Name("UpdateTaskInfoNotification"), object: nil)
     }
     
     func setupNavigationItem() {
@@ -67,6 +68,12 @@ private extension BucketListViewController {
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
+    
+    @objc func updateTaskInfo() {
+        DispatchQueue.main.async {
+            self.bucketListView.tableView.reloadData()
+        }
+    }
 }
 
 extension BucketListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -89,28 +96,6 @@ extension BucketListViewController: UITableViewDelegate, UITableViewDataSource {
         let EditVC = EditViewController()
         EditVC.task = selectTask
         present(EditVC, animated: true, completion: nil)
-        
-//
-//        let alert = UIAlertController(title: "Edit Bucket List",
-//                                      message: "\nCreate Date: \(viewModel.formattedDate(from: selectTask.createDate))\nModify Date: \(viewModel.formattedDate(from: selectTask.modifyDate))\n",
-//                                      preferredStyle: .alert)
-//        alert.addTextField()
-//
-//        let textField = alert.textFields![0]
-//        textField.text = selectTask.title
-//
-//        let save = UIAlertAction(title: "Save", style: .default) { _ in
-//            if let textField = alert.textFields?.first, let title = textField.text {
-//                self.viewModel.editBucketListItem(selectTask, title)
-//                self.viewModel.fetchBucketList()
-//            }
-//        }
-//
-//        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-//
-//        alert.addAction(save)
-//        alert.addAction(cancel)
-//        present(alert, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

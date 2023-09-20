@@ -18,15 +18,16 @@ class CategoryManager {
         self.context = appDelegate.persistentContainer.viewContext
     }
 
-    func addCategory(_ title: String) {
+    func addCategory(_ title: String) -> Category {
         let category = Category(context: context)
         category.id = UUID()
         category.title = title
 
         do {
             try context.save()
+            return category
         } catch {
-            print("🚨 Error adding category: \(error)")
+            fatalError("🚨 Failed to add category: \(error)")
         }
     }
 
@@ -39,7 +40,7 @@ class CategoryManager {
             return []
         }
     }
-    
+
     func getCategory(withTitle title: String) -> Category? {
         let request: NSFetchRequest<Category> = Category.fetchRequest()
         request.predicate = NSPredicate(format: "title == %@", title)

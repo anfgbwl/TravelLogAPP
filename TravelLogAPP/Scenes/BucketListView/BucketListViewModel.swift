@@ -44,10 +44,16 @@ class BucketListViewModel {
         }
     }
 
-    func editBucketListItem(_ task: Task, _ title: String) {
+    func editBucketListItem(_ task: Task, _ title: String, _ newCategory: Category) {
+        if let oldCategory = task.category {
+            oldCategory.removeFromTask(task)
+        }
+
         task.title = title
         task.modifyDate = Date()
         task.isCompleted = false
+        
+        newCategory.addToTask(task)
 
         do {
             try context.save()
