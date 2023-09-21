@@ -17,6 +17,18 @@ class CategoryManager {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.context = appDelegate.persistentContainer.viewContext
     }
+    
+    func fetchCategory(completion: @escaping (Bool) -> Void) {
+        let request = Category.fetchRequest()
+
+        do {
+            categories = try context.fetch(request)
+            completion(true)
+        } catch {
+            print("🚨 Error: Fetch Categories")
+            completion(false)
+        }
+    }
 
     func addCategory(_ title: String) -> Category {
         if let existingCategory = getCategory(withTitle: title) {
@@ -35,18 +47,8 @@ class CategoryManager {
         }
     }
 
-    func fetchCategory() {
-        let request = Category.fetchRequest()
-
-        do {
-            categories = try context.fetch(request)
-        } catch {
-            print("🚨 Error: Fetch Categories")
-        }
-    }
-
     func getCategory(withTitle title: String) -> Category? {
-        let request: NSFetchRequest<Category> = Category.fetchRequest()
+        let request = Category.fetchRequest()
         request.predicate = NSPredicate(format: "title == %@", title)
 
         do {
@@ -54,6 +56,19 @@ class CategoryManager {
         } catch {
             print("🚨 Error fetching category: \(error)")
             return nil
+        }
+    }
+    
+    func deleteCategory(_ category: Category) {
+        let request = Category.fetchRequest()
+        request.predicate = NSPredicate(format: "title == %@", category)
+        
+        context.delete(category)
+
+        do {
+            try context.save()
+        } catch {
+            print("🚨 Error: Delete category")
         }
     }
 

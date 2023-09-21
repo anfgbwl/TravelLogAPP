@@ -14,10 +14,12 @@ class BucketListViewModel {
     var tableViewReloadHandler: (() -> Void)?
 
     func fetchBucketList() {
+        print("fetch Task 작동")
         let request = Task.fetchRequest()
 
         do {
             bucketList = try context.fetch(request)
+            print("ㅇㄹㅇㅇㅇㅇ")
             tableViewReloadHandler?()
         } catch {
             print("🚨 Error: Fetch Task")
@@ -36,7 +38,7 @@ class BucketListViewModel {
 
         do {
             try context.save()
-            tableViewReloadHandler?()
+            fetchBucketList()
         } catch {
             print("🚨 Error: Save Bucket List Item")
         }
@@ -45,6 +47,9 @@ class BucketListViewModel {
     func editBucketListItem(_ task: Task, _ title: String, _ newCategory: Category) {
         if let oldCategory = task.category {
             oldCategory.removeFromTask(task)
+            if let tasks = oldCategory.task, tasks.count == 0 {
+                CategoryManager.shared.deleteCategory(oldCategory)
+            }
         }
 
         task.title = title
@@ -52,12 +57,13 @@ class BucketListViewModel {
         task.isCompleted = false
 
         newCategory.addToTask(task)
-
-        do {
-            try context.save()
-            tableViewReloadHandler?()
-        } catch {
-            print("🚨 Error: Save Bucket List Item")
+        CategoryManager.shared.fetchCategory { _ in
+            do {
+                try self.context.save()
+                self.fetchBucketList()
+            } catch {
+                print("🚨 Error: Save Bucket List Item")
+            }
         }
     }
 
@@ -66,7 +72,7 @@ class BucketListViewModel {
 
         do {
             try context.save()
-            tableViewReloadHandler?()
+            fetchBucketList()
         } catch {
             print("🚨 Error: Save Bucket List Item")
         }
@@ -77,7 +83,7 @@ class BucketListViewModel {
 
         do {
             try context.save()
-            tableViewReloadHandler?()
+            fetchBucketList()
         } catch {
             print("🚨 Error: Save task")
         }
@@ -92,7 +98,7 @@ class BucketListViewModel {
                 context.delete(task)
             }
             try context.save()
-            tableViewReloadHandler?()
+            fetchBucketList()
         } catch {
             print("🚨 Error: Delete all tasks")
         }

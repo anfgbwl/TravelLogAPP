@@ -30,12 +30,12 @@
 		3F705C562AB923070005647F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C552AB923070005647F /* ProfileView.swift */; };
 		3F705C582AB960DD0005647F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C572AB960DD0005647F /* ProfileViewModel.swift */; };
 		3F705C632AB969C40005647F /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C612AB969C40005647F /* User+CoreDataClass.swift */; };
-		3F705C712ABAD3080005647F /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C6D2ABAD3080005647F /* Task+CoreDataClass.swift */; };
-		3F705C732ABAD3080005647F /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C6F2ABAD3080005647F /* Category+CoreDataClass.swift */; };
 		3F705C762ABADA340005647F /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C752ABADA340005647F /* CategoryManager.swift */; };
 		3F705C782ABAE5670005647F /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C772ABAE5670005647F /* EditView.swift */; };
 		3F705C7B2ABAEADF0005647F /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C7A2ABAEADF0005647F /* EditViewController.swift */; };
 		3F705C7E2ABC13E90005647F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C7D2ABC13E90005647F /* AlertManager.swift */; };
+		3F705C832ABC18860005647F /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C7F2ABC18860005647F /* Task+CoreDataClass.swift */; };
+		3F705C852ABC18860005647F /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C812ABC18860005647F /* Category+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,12 +63,12 @@
 		3F705C552AB923070005647F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3F705C572AB960DD0005647F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		3F705C612AB969C40005647F /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		3F705C6D2ABAD3080005647F /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		3F705C6F2ABAD3080005647F /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3F705C752ABADA340005647F /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		3F705C772ABAE5670005647F /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		3F705C7A2ABAEADF0005647F /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		3F705C7D2ABC13E90005647F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		3F705C7F2ABC18860005647F /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3F705C812ABC18860005647F /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +86,8 @@
 		3F0C504C2AB2D89900F9D398 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3F705C6D2ABAD3080005647F /* Task+CoreDataClass.swift */,
-				3F705C6F2ABAD3080005647F /* Category+CoreDataClass.swift */,
+				3F705C7F2ABC18860005647F /* Task+CoreDataClass.swift */,
+				3F705C812ABC18860005647F /* Category+CoreDataClass.swift */,
 				3F705C612AB969C40005647F /* User+CoreDataClass.swift */,
 				3F705C752ABADA340005647F /* CategoryManager.swift */,
 			);
@@ -290,7 +290,6 @@
 				3F38625C2AB29BFB00479E4C /* ViewController.swift in Sources */,
 				3F0C50642AB4543200F9D398 /* ProfileDesignView.swift in Sources */,
 				3F0C50582AB420F300F9D398 /* MainView.swift in Sources */,
-				3F705C732ABAD3080005647F /* Category+CoreDataClass.swift in Sources */,
 				3F705C582AB960DD0005647F /* ProfileViewModel.swift in Sources */,
 				3F0C50622AB4517000F9D398 /* CompleteViewModel.swift in Sources */,
 				3F0C50602AB44FC700F9D398 /* CompleteView.swift in Sources */,
@@ -299,12 +298,13 @@
 				3F0C505E2AB43E2200F9D398 /* BucketListCell.swift in Sources */,
 				3F3862622AB29BFB00479E4C /* TravelLogAPP.xcdatamodeld in Sources */,
 				3F705C762ABADA340005647F /* CategoryManager.swift in Sources */,
+				3F705C852ABC18860005647F /* Category+CoreDataClass.swift in Sources */,
 				3F705C562AB923070005647F /* ProfileView.swift in Sources */,
+				3F705C832ABC18860005647F /* Task+CoreDataClass.swift in Sources */,
 				3F705C4D2AB85EA20005647F /* PictureCell.swift in Sources */,
 				3F705C7E2ABC13E90005647F /* AlertManager.swift in Sources */,
 				3F3862732AB29E4800479E4C /* ProfileDesignViewController.swift in Sources */,
 				3F0C505C2AB4284100F9D398 /* BucketListViewModel.swift in Sources */,
-				3F705C712ABAD3080005647F /* Task+CoreDataClass.swift in Sources */,
 				3F38626F2AB29CD800479E4C /* BucketListViewController.swift in Sources */,
 				3F38625A2AB29BFB00479E4C /* SceneDelegate.swift in Sources */,
 				3F3862712AB29DF400479E4C /* CompleteViewController.swift in Sources */,
