@@ -18,8 +18,8 @@ class BucketListViewController: UIViewController {
         
         setup()
         setupNavigationItem()
-        fetchAndUpdateData()
         tableViewReload()
+        fetchAndUpdateData()
         
 //        if let cate = categories {
 //            print("Category Contents:")
@@ -82,6 +82,16 @@ private extension BucketListViewController {
                 print("핸들러 작동")
                 DispatchQueue.main.async {
                     print("테이블뷰 리로드")
+                    if let categories = CategoryManager.shared.categories {
+                        print("카테고리 수: \(categories.count)")
+                    } else {
+                        print("카테고리 데이터 없음")
+                    }
+                    if let taskList = self!.viewModel.bucketList {
+                        print("펫치 후 테스크 수: \(taskList.count)")
+                    } else {
+                        print("테스크 데이터 없음")
+                    }
                     self?.bucketListView.tableView.reloadData()
                 }
             }
@@ -90,6 +100,16 @@ private extension BucketListViewController {
                 print("핸들러 작동")
                 DispatchQueue.main.async {
                     print("테이블뷰 리로드")
+                    if let categories = CategoryManager.shared.categories {
+                        print("카테고리 수: \(categories.count)")
+                    } else {
+                        print("카테고리 데이터 없음")
+                    }
+                    if let taskList = self!.viewModel.bucketList {
+                        print("펫치 후 테스크 수: \(taskList.count)")
+                    } else {
+                        print("테스크 데이터 없음")
+                    }
                     self?.bucketListView.tableView.reloadData()
                 }
             }
@@ -116,6 +136,18 @@ private extension BucketListViewController {
     
     @objc func updateTaskInfo() {
         DispatchQueue.main.async {
+            print("task 수정 적용 테이블 뷰 리로드해!")
+            
+            if let categories = CategoryManager.shared.categories {
+                print("카테고리 수: \(categories.count)")
+            } else {
+                print("카테고리 데이터 없음")
+            }
+            if let taskList = self.viewModel.bucketList {
+                print("펫치 후 테스크 수: \(taskList.count)")
+            } else {
+                print("테스크 데이터 없음")
+            }
             self.bucketListView.tableView.reloadData()
         }
     }

@@ -28,8 +28,10 @@ class CompleteViewController: UIViewController {
 private extension CompleteViewController {
     func tableViewReload() {
         completeViewModel.tableViewReloadHandler = { [weak self] in
+            print("complete 핸들러 작동")
             DispatchQueue.main.async {
                 self?.completeView.tableView.reloadData()
+                print("complete 리로드")
             }
         }
     }

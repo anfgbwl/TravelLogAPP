@@ -19,8 +19,9 @@ class BucketListViewModel {
 
         do {
             bucketList = try context.fetch(request)
-            print("ㅇㄹㅇㅇㅇㅇ")
+            print("핸들러 호출 전")
             tableViewReloadHandler?()
+            print("핸들러 호출 후")
         } catch {
             print("🚨 Error: Fetch Task")
         }
@@ -35,6 +36,13 @@ class BucketListViewModel {
 
         let newCategory = CategoryManager.shared.addCategory("국내")
         newCategory.addToTask(newBucketList)
+        CategoryManager.shared.fetchCategory { _ in
+            do {
+                try self.context.save()
+            } catch {
+                print("🚨 Error: Fetch Category")
+            }
+        }
 
         do {
             try context.save()
@@ -46,9 +54,11 @@ class BucketListViewModel {
 
     func editBucketListItem(_ task: Task, _ title: String, _ newCategory: Category) {
         if let oldCategory = task.category {
-            oldCategory.removeFromTask(task)
-            if let tasks = oldCategory.task, tasks.count == 0 {
-                CategoryManager.shared.deleteCategory(oldCategory)
+            if oldCategory != newCategory {
+                oldCategory.removeFromTask(task)
+                if let tasks = oldCategory.task, tasks.count == 0 {
+                    CategoryManager.shared.deleteCategory(oldCategory)
+                }
             }
         }
 
