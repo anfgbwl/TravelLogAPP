@@ -53,12 +53,10 @@ class BucketListViewModel {
     }
 
     func editBucketListItem(_ task: Task, _ title: String, _ newCategory: Category) {
-        if let oldCategory = task.category {
-            if oldCategory != newCategory {
-                oldCategory.removeFromTask(task)
-                if let tasks = oldCategory.task, tasks.count == 0 {
-                    CategoryManager.shared.deleteCategory(oldCategory)
-                }
+        if let oldCategory = task.category, oldCategory != newCategory {
+            oldCategory.removeFromTask(task)
+            if let tasks = oldCategory.task, tasks.count == 0 {
+                CategoryManager.shared.deleteCategory(oldCategory)
             }
         }
 

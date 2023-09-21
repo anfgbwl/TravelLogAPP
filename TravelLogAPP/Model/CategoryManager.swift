@@ -40,6 +40,13 @@ class CategoryManager {
 
             do {
                 try context.save()
+                fetchCategory { _ in
+                    do {
+                        try self.context.save()
+                    } catch {
+                        print("🚨 Error: Fetch Category")
+                    }
+                }
                 return category
             } catch {
                 fatalError("🚨 Failed to add category: \(error)")
@@ -63,10 +70,18 @@ class CategoryManager {
         let request = Category.fetchRequest()
         request.predicate = NSPredicate(format: "title == %@", category)
         
+        if let tasks = category.task, tasks.count > 0 { return }
         context.delete(category)
 
         do {
             try context.save()
+            fetchCategory { _ in
+                do {
+                    try self.context.save()
+                } catch {
+                    print("🚨 Error: Fetch Category")
+                }
+            }
         } catch {
             print("🚨 Error: Delete category")
         }
