@@ -58,7 +58,7 @@ private extension BucketListViewController {
             if success {
                 self?.categories = CategoryManager.shared.categories ?? []
                 self?.viewModel.fetchBucketList()
-                self?.bucketListView.tableView.reloadData()
+                // self?.bucketListView.tableView.reloadData()
             } else {
                 print("🚨 Error: Fetch and update data")
             }
@@ -105,8 +105,8 @@ private extension BucketListViewController {
     
     @objc func updateTaskInfo() {
         DispatchQueue.main.async {
-            print("task 수정 적용 테이블 뷰 리로드해!")
-
+            print("updateTaskInfo 작동")
+            self.categories = CategoryManager.shared.categories ?? []
             if let categories = CategoryManager.shared.categories {
                 print("카테고리 수: \(categories.count)")
             } else {
