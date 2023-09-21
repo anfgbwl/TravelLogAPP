@@ -41,17 +41,19 @@ private extension BucketListViewController {
         bucketListView.tableView.delegate = self
         bucketListView.addButton.target = self
         bucketListView.addButton.action = #selector(didTapAddButton)
+        bucketListView.deleteButton.target = self
+        bucketListView.deleteButton.action = #selector(didTapDeleteButton)
         NotificationCenter.default.addObserver(self, selector: #selector(updateTaskInfo), name: NSNotification.Name("UpdateTaskInfoNotification"), object: nil)
     }
     
     func setupNavigationItem() {
         navigationItem.title = "✍🏻 Bucket List ✍🏻"
-        navigationItem.rightBarButtonItem = bucketListView.addButton
+        navigationItem.rightBarButtonItems = [bucketListView.addButton, bucketListView.deleteButton]
     }
 }
 
 private extension BucketListViewController {
-    @objc private func didTapAddButton() {
+    @objc func didTapAddButton() {
         let alert = UIAlertController(title: "Add Bucket List", message: "", preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = "Please, write your bucket list."
@@ -65,6 +67,18 @@ private extension BucketListViewController {
         }
         let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
         alert.addAction(add)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func didTapDeleteButton() {
+        let alert = UIAlertController(title: "", message: "Are you sure you want to delete all lists?\nOnce deleted, it cannot be recovered.", preferredStyle: .actionSheet)
+        let delete = UIAlertAction(title: "Delete All List", style: .destructive) { _ in
+            self.viewModel.deleteAllTasks()
+            CategoryManager.shared.deleteAllCategories()
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(delete)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }

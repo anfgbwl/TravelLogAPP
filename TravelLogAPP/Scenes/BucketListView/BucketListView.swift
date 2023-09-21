@@ -23,6 +23,12 @@ class BucketListView: UIView {
         return btn
     }()
     
+    let deleteButton: UIBarButtonItem = {
+        let btn = UIBarButtonItem()
+        btn.image = UIImage(systemName: "trash.circle")
+        return btn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 

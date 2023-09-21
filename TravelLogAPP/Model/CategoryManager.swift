@@ -10,7 +10,7 @@ import UIKit
 
 class CategoryManager {
     static let shared = CategoryManager()
-
+    var categories: [Category]?
     let context: NSManagedObjectContext
 
     private init() {
@@ -19,25 +19,29 @@ class CategoryManager {
     }
 
     func addCategory(_ title: String) -> Category {
-        let category = Category(context: context)
-        category.id = UUID()
-        category.title = title
+        if let existingCategory = getCategory(withTitle: title) {
+            return existingCategory
+        } else {
+            let category = Category(context: context)
+            category.id = UUID()
+            category.title = title
 
-        do {
-            try context.save()
-            return category
-        } catch {
-            fatalError("🚨 Failed to add category: \(error)")
+            do {
+                try context.save()
+                return category
+            } catch {
+                fatalError("🚨 Failed to add category: \(error)")
+            }
         }
     }
 
-    func getAllCategories() -> [Category] {
-        let request: NSFetchRequest<Category> = Category.fetchRequest()
+    func fetchCategory() {
+        let request = Category.fetchRequest()
+
         do {
-            return try context.fetch(request)
+            categories = try context.fetch(request)
         } catch {
-            print("🚨 Error fetching categories: \(error)")
-            return []
+            print("🚨 Error: Fetch Categories")
         }
     }
 
@@ -50,6 +54,20 @@ class CategoryManager {
         } catch {
             print("🚨 Error fetching category: \(error)")
             return nil
+        }
+    }
+
+    func deleteAllCategories() {
+        let request = Category.fetchRequest()
+
+        do {
+            let categories = try context.fetch(request)
+            for category in categories {
+                context.delete(category)
+            }
+            try context.save()
+        } catch {
+            print("🚨 Error: Delete all categories")
         }
     }
 }

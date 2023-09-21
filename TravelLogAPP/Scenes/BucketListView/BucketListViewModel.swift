@@ -10,20 +10,7 @@ import UIKit
 
 class BucketListViewModel {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var bucketList: [Task]? {
-        didSet {
-            if let bucketList = bucketList {
-                print("Bucket List Contents:")
-                for task in bucketList {
-                    let category = task.category
-                    print("Title: \(task.title!), Category: \(String(describing: category?.title))")
-                }
-            } else {
-                print("Bucket List is empty or nil.")
-            }
-        }
-    }
-    var caterogories: [Category]?
+    var bucketList: [Task]?
     var tableViewReloadHandler: (() -> Void)?
 
     func fetchBucketList() {
@@ -43,11 +30,9 @@ class BucketListViewModel {
         newBucketList.title = title
         newBucketList.createDate = Date()
         newBucketList.isCompleted = false
-        
-        let category = "국내"
-        CategoryManager.shared.addCategory(category)
-        let unspecifiedCategory = CategoryManager.shared.getCategory(withTitle: category)
-        unspecifiedCategory?.addToTask(newBucketList)
+
+        let newCategory = CategoryManager.shared.addCategory("국내")
+        newCategory.addToTask(newBucketList)
 
         do {
             try context.save()
@@ -65,7 +50,7 @@ class BucketListViewModel {
         task.title = title
         task.modifyDate = Date()
         task.isCompleted = false
-        
+
         newCategory.addToTask(task)
 
         do {
@@ -95,6 +80,21 @@ class BucketListViewModel {
             tableViewReloadHandler?()
         } catch {
             print("🚨 Error: Save task")
+        }
+    }
+
+    func deleteAllTasks() {
+        let request = Task.fetchRequest()
+
+        do {
+            let tasks = try context.fetch(request)
+            for task in tasks {
+                context.delete(task)
+            }
+            try context.save()
+            tableViewReloadHandler?()
+        } catch {
+            print("🚨 Error: Delete all tasks")
         }
     }
 
