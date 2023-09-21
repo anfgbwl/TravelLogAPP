@@ -23,9 +23,17 @@ class EditViewController: UIViewController {
 private extension EditViewController {
     func setup() {
         view = editView
-        editView.setTaskInfo(task!)
+        setTaskInfo(task!)
         editView.cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
         editView.saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+    }
+    
+    func setTaskInfo(_ task: Task) {
+        editView.inputCategory.text = task.category?.title
+        editView.inputBucketList.text = task.title
+        editView.isCompletedLabel.text = task.isCompleted.description
+        editView.createDateLabel.text = viewModel.formattedDate(from: task.createDate)
+        editView.modifyDateLabel.text = viewModel.formattedDate(from: task.modifyDate)
     }
 
     @objc func didTapCancelButton() {
@@ -33,7 +41,7 @@ private extension EditViewController {
     }
 
     @objc func didTapSaveButton() {
-        let newCategoryTitle = editView.inputCategory.text ?? "Unspecified"
+        let newCategoryTitle = editView.inputCategory.text ?? "일반"
         let newCategory = CategoryManager.shared.getCategory(withTitle: newCategoryTitle) ?? CategoryManager.shared.addCategory(newCategoryTitle)
         viewModel.editBucketListItem(task!, editView.inputBucketList.text ?? "", newCategory)
         NotificationCenter.default.post(name: NSNotification.Name("UpdateTaskInfoNotification"), object: viewModel.bucketList)

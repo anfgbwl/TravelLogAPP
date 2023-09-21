@@ -167,6 +167,7 @@
 			children = (
 				3F3862572AB29BFB00479E4C /* AppDelegate.swift */,
 				3F3862592AB29BFB00479E4C /* SceneDelegate.swift */,
+				3F705C7C2ABBFC280005647F /* Utils */,
 				3F0C504C2AB2D89900F9D398 /* Model */,
 				3F0C50522AB41FD000F9D398 /* Scenes */,
 				3F3862632AB29BFC00479E4C /* Assets.xcassets */,
@@ -194,6 +195,13 @@
 				3F705C7A2ABAEADF0005647F /* EditViewController.swift */,
 			);
 			path = EditView;
+			sourceTree = "<group>";
+		};
+		3F705C7C2ABBFC280005647F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

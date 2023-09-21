@@ -23,12 +23,6 @@ class BucketListView: UIView {
         return btn
     }()
     
-    let addCategory: UIBarButtonItem = {
-        let btn = UIBarButtonItem()
-        btn.image = UIImage(systemName: "folder.fill.badge.plus")
-        return btn
-    }()
-
     override init(frame: CGRect) {
         super.init(frame: frame)
 

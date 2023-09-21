@@ -10,7 +10,19 @@ import UIKit
 
 class BucketListViewModel {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var bucketList: [Task]?
+    var bucketList: [Task]? {
+        didSet {
+            if let bucketList = bucketList {
+                print("Bucket List Contents:")
+                for task in bucketList {
+                    let category = task.category
+                    print("Title: \(task.title!), Category: \(String(describing: category?.title))")
+                }
+            } else {
+                print("Bucket List is empty or nil.")
+            }
+        }
+    }
     var caterogories: [Category]?
     var tableViewReloadHandler: (() -> Void)?
 
@@ -31,9 +43,10 @@ class BucketListViewModel {
         newBucketList.title = title
         newBucketList.createDate = Date()
         newBucketList.isCompleted = false
-
-        CategoryManager.shared.addCategory("Unspecified")
-        let unspecifiedCategory = CategoryManager.shared.getCategory(withTitle: "Unspecified")
+        
+        let category = "국내"
+        CategoryManager.shared.addCategory(category)
+        let unspecifiedCategory = CategoryManager.shared.getCategory(withTitle: category)
         unspecifiedCategory?.addToTask(newBucketList)
 
         do {

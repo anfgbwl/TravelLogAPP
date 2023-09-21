@@ -46,7 +46,7 @@ private extension BucketListViewController {
     
     func setupNavigationItem() {
         navigationItem.title = "✍🏻 Bucket List ✍🏻"
-        navigationItem.rightBarButtonItems = [bucketListView.addButton, bucketListView.addCategory]
+        navigationItem.rightBarButtonItem = bucketListView.addButton
     }
 }
 

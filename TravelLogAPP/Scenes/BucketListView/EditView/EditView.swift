@@ -215,12 +215,4 @@ class EditView: UIView {
             make.leading.trailing.equalTo(18)
         }
     }
-
-    func setTaskInfo(_ task: Task) {
-        inputCategory.text = task.category?.title
-        inputBucketList.text = task.title
-        isCompletedLabel.text = task.isCompleted.description
-        createDateLabel.text = task.createDate?.description
-        modifyDateLabel.text = task.modifyDate?.description        
-    }
 }
