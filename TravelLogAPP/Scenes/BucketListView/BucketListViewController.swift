@@ -98,6 +98,7 @@ private extension BucketListViewController {
     
     @objc func didTapDeleteButton() {
         AlertManager.shared.deleteAllAlert(self) {
+            self.categories = CategoryManager.shared.categories ?? []
             self.viewModel.deleteAllTasks()
             CategoryManager.shared.deleteAllCategories()
         }
