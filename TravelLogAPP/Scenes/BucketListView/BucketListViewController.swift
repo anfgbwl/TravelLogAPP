@@ -54,33 +54,20 @@ private extension BucketListViewController {
 
 private extension BucketListViewController {
     @objc func didTapAddButton() {
-        let alert = UIAlertController(title: "Add Bucket List", message: "", preferredStyle: .alert)
-        alert.addTextField { textField in
-            textField.placeholder = "Please, write your bucket list."
-        }
-        let add = UIAlertAction(title: "Add", style: .default) { _ in
-            if let textField = alert.textFields?.first, let title = textField.text {
+        AlertManager.shared.addAlert(self) { title in
+            if let title = title {
                 let taskId = UUID().uuidString
                 self.viewModel.addBucketListItem(title, taskId)
                 self.viewModel.fetchBucketList()
             }
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-        alert.addAction(add)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
     }
     
     @objc func didTapDeleteButton() {
-        let alert = UIAlertController(title: "", message: "Are you sure you want to delete all lists?\nOnce deleted, it cannot be recovered.", preferredStyle: .actionSheet)
-        let delete = UIAlertAction(title: "Delete All List", style: .destructive) { _ in
+        AlertManager.shared.deleteAllAlert(self) {
             self.viewModel.deleteAllTasks()
             CategoryManager.shared.deleteAllCategories()
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(delete)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
     }
     
     @objc func updateTaskInfo() {
@@ -138,5 +125,4 @@ extension BucketListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-    
 }

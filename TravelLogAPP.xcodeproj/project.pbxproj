@@ -35,6 +35,7 @@
 		3F705C762ABADA340005647F /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C752ABADA340005647F /* CategoryManager.swift */; };
 		3F705C782ABAE5670005647F /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C772ABAE5670005647F /* EditView.swift */; };
 		3F705C7B2ABAEADF0005647F /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C7A2ABAEADF0005647F /* EditViewController.swift */; };
+		3F705C7E2ABC13E90005647F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F705C7D2ABC13E90005647F /* AlertManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		3F705C752ABADA340005647F /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		3F705C772ABAE5670005647F /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		3F705C7A2ABAEADF0005647F /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		3F705C7D2ABC13E90005647F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 		3F705C7C2ABBFC280005647F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3F705C7D2ABC13E90005647F /* AlertManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				3F705C762ABADA340005647F /* CategoryManager.swift in Sources */,
 				3F705C562AB923070005647F /* ProfileView.swift in Sources */,
 				3F705C4D2AB85EA20005647F /* PictureCell.swift in Sources */,
+				3F705C7E2ABC13E90005647F /* AlertManager.swift in Sources */,
 				3F3862732AB29E4800479E4C /* ProfileDesignViewController.swift in Sources */,
 				3F0C505C2AB4284100F9D398 /* BucketListViewModel.swift in Sources */,
 				3F705C712ABAD3080005647F /* Task+CoreDataClass.swift in Sources */,
