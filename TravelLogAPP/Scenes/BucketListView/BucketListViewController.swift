@@ -16,9 +16,9 @@ class BucketListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableViewReload()
+        setupUI()
         setup()
-        setupNavigationItem()
+        tableViewReload()
         fetchAndUpdateData()
         
         if let cate = categories {
@@ -48,27 +48,15 @@ private extension BucketListViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateTaskInfo), name: NSNotification.Name("UpdateTaskInfoNotification"), object: nil)
     }
     
-    func setupNavigationItem() {
+    func setupUI() {
         navigationItem.title = "✍🏻 Bucket List ✍🏻"
         navigationItem.rightBarButtonItems = [bucketListView.addButton, bucketListView.deleteButton]
-    }
-    
-    func fetchAndUpdateData() {
-        CategoryManager.shared.fetchCategory { [weak self] success in
-            if success {
-                self?.categories = CategoryManager.shared.categories ?? []
-                self?.viewModel.fetchBucketList()
-                // self?.bucketListView.tableView.reloadData()
-            } else {
-                print("🚨 Error: Fetch and update data")
-            }
-        }
     }
 
     func tableViewReload() {
         viewModel.tableViewReloadHandler = { [weak self] in
             print("핸들러 작동")
-            
+            self?.categories = CategoryManager.shared.categories ?? []
             DispatchQueue.main.async {
                 self?.bucketListView.tableView.reloadData()
                 print("테이블뷰 리로드")
@@ -83,7 +71,18 @@ private extension BucketListViewController {
                 } else {
                     print("테스크 데이터 없음")
                 }
-                
+            }
+        }
+    }
+    
+    func fetchAndUpdateData() {
+        CategoryManager.shared.fetchCategory { [weak self] success in
+            if success {
+//                self?.categories = CategoryManager.shared.categories ?? []
+                self?.viewModel.fetchBucketList()
+                // self?.bucketListView.tableView.reloadData()
+            } else {
+                print("🚨 Error: Fetch and update data")
             }
         }
     }
@@ -128,6 +127,7 @@ private extension BucketListViewController {
 
 extension BucketListViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
+        print("카테고리 수: \(categories?.count)")
         return categories?.count ?? 0
     }
     

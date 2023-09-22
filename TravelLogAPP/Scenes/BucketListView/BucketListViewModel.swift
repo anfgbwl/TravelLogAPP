@@ -39,17 +39,18 @@ class BucketListViewModel {
         CategoryManager.shared.fetchCategory { _ in
             do {
                 try self.context.save()
+                self.fetchBucketList()
             } catch {
                 print("🚨 Error: Fetch Category")
             }
         }
 
-        do {
-            try context.save()
-            fetchBucketList()
-        } catch {
-            print("🚨 Error: Save Bucket List Item")
-        }
+//        do {
+//            try context.save()
+//            fetchBucketList()
+//        } catch {
+//            print("🚨 Error: Save Bucket List Item")
+//        }
     }
 
     func editBucketListItem(_ task: Task, _ title: String, _ newCategory: Category) {

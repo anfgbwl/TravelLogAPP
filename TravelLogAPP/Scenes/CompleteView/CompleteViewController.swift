@@ -14,9 +14,9 @@ class CompleteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableViewReload()
         setup()
-        setupNavigationItem()
+        setupUI()
+        tableViewReload()
         completeViewModel.fetchCompletedBucketList()
     }
     
@@ -26,6 +26,16 @@ class CompleteViewController: UIViewController {
 }
 
 private extension CompleteViewController {
+    func setup() {
+        completeView.tableView.dataSource = self
+        completeView.tableView.delegate = self
+    }
+
+    func setupUI() {
+        view = completeView
+        navigationItem.title = "✅ Completed List ✅"
+    }
+    
     func tableViewReload() {
         completeViewModel.tableViewReloadHandler = { [weak self] in
             print("complete 핸들러 작동")
@@ -34,17 +44,7 @@ private extension CompleteViewController {
                 print("complete 리로드")
             }
         }
-    }
-    
-    func setup() {
-        view = completeView
-        completeView.tableView.dataSource = self
-        completeView.tableView.delegate = self
-    }
-
-    func setupNavigationItem() {
-        navigationItem.title = "✅ Completed List ✅"
-    }
+    }    
 }
 
 extension CompleteViewController: UITableViewDelegate, UITableViewDataSource {
