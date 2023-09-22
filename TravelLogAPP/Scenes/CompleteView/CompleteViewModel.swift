@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 class CompleteViewModel {
-    private let completeView = CompleteView()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let completeView = CompleteView()
     var completedList: [Task]?
     var tableViewReloadHandler: (() -> Void)?
 

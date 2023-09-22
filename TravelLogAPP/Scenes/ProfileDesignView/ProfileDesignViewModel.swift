@@ -10,7 +10,6 @@ import UIKit
 
 class ProfileDesignViewModel {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     var user: User?
     var pictures: [UIImage] = [
         UIImage(named: "1")!,

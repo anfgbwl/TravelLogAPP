@@ -10,6 +10,7 @@ import UIKit
 
 class CategoryManager {
     static let shared = CategoryManager()
+    
     var categories: [Category]?
     let context: NSManagedObjectContext
 
@@ -106,6 +107,5 @@ class CategoryManager {
         } catch {
             print("🚨 Error: Delete all categories")
         }
-        print("카테고리 매니저 - 카테고리 수: \(categories?.count)")
     }
 }

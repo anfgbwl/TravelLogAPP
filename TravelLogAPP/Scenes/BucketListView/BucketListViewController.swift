@@ -20,15 +20,6 @@ class BucketListViewController: UIViewController {
         setup()
         tableViewReload()
         fetchAndUpdateData()
-        
-        if let cate = categories {
-            print("Category Contents:")
-            for category in cate {
-                print("Title: \(category.title ?? "N/A")")
-            }
-        } else {
-            print("카테고리 없음")
-        }
     }
     
     deinit {
@@ -55,22 +46,9 @@ private extension BucketListViewController {
 
     func tableViewReload() {
         viewModel.tableViewReloadHandler = { [weak self] in
-            print("핸들러 작동")
             self?.categories = CategoryManager.shared.categories ?? []
             DispatchQueue.main.async {
                 self?.bucketListView.tableView.reloadData()
-                print("테이블뷰 리로드")
-                
-                if let categories = CategoryManager.shared.categories {
-                    print("카테고리 수: \(categories.count)")
-                } else {
-                    print("카테고리 데이터 없음")
-                }
-                if let taskList = self!.viewModel.bucketList {
-                    print("펫치 후 테스크 수: \(taskList.count)")
-                } else {
-                    print("테스크 데이터 없음")
-                }
             }
         }
     }
@@ -78,9 +56,7 @@ private extension BucketListViewController {
     func fetchAndUpdateData() {
         CategoryManager.shared.fetchCategory { [weak self] success in
             if success {
-//                self?.categories = CategoryManager.shared.categories ?? []
                 self?.viewModel.fetchBucketList()
-                // self?.bucketListView.tableView.reloadData()
             } else {
                 print("🚨 Error: Fetch and update data")
             }
@@ -108,18 +84,7 @@ private extension BucketListViewController {
     
     @objc func updateTaskInfo() {
         DispatchQueue.main.async {
-            print("updateTaskInfo 작동")
             self.categories = CategoryManager.shared.categories ?? []
-            if let categories = CategoryManager.shared.categories {
-                print("카테고리 수: \(categories.count)")
-            } else {
-                print("카테고리 데이터 없음")
-            }
-            if let taskList = self.viewModel.bucketList {
-                print("펫치 후 테스크 수: \(taskList.count)")
-            } else {
-                print("테스크 데이터 없음")
-            }
             self.bucketListView.tableView.reloadData()
         }
     }
@@ -127,7 +92,6 @@ private extension BucketListViewController {
 
 extension BucketListViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("카테고리 수: \(categories?.count)")
         return categories?.count ?? 0
     }
     
@@ -206,7 +170,6 @@ extension BucketListViewController: UITableViewDelegate, UITableViewDataSource {
                 if var tasks = category.task?.allObjects as? [Task], tasks.indices.contains(indexPath.row) {
                     let deleteTask = tasks[indexPath.row]
                     tasks.remove(at: indexPath.row)
-                    print("tasks.count: \(tasks.count)")
                     self.viewModel.deleteBucketListItem(deleteTask)
                     if tasks.count == 0 {
                         CategoryManager.shared.deleteCategory(category)

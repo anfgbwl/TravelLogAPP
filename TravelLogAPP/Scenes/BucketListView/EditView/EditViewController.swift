@@ -10,7 +10,6 @@ import UIKit
 class EditViewController: UIViewController {
     private let editView = EditView()
     private let viewModel = BucketListViewModel()
-
     var task: Task?
 
     override func viewDidLoad() {
@@ -43,12 +42,10 @@ private extension EditViewController {
     @objc func didTapSaveButton() {
         let newCategoryTitle = editView.inputCategory.text ?? "일반"
         let newBucketListText = editView.inputBucketList.text ?? ""
-
         if newCategoryTitle != task?.category?.title || newBucketListText != task?.title {
             let newCategory = CategoryManager.shared.getCategory(withTitle: newCategoryTitle) ?? CategoryManager.shared.addCategory(newCategoryTitle)
             viewModel.editBucketListItem(task!, newBucketListText, newCategory)
         }
-
         NotificationCenter.default.post(name: NSNotification.Name("UpdateTaskInfoNotification"), object: viewModel.bucketList)
         DispatchQueue.main.async {
             self.dismiss(animated: true)

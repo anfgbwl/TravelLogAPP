@@ -14,14 +14,11 @@ class BucketListViewModel {
     var tableViewReloadHandler: (() -> Void)?
 
     func fetchBucketList() {
-        print("fetch Task 작동")
         let request = Task.fetchRequest()
-
+        
         do {
             bucketList = try context.fetch(request)
-            print("핸들러 호출 전")
             tableViewReloadHandler?()
-            print("핸들러 호출 후")
         } catch {
             print("🚨 Error: Fetch Task")
         }
@@ -36,6 +33,7 @@ class BucketListViewModel {
 
         let newCategory = CategoryManager.shared.addCategory("국내")
         newCategory.addToTask(newBucketList)
+        
         CategoryManager.shared.fetchCategory { _ in
             do {
                 try self.context.save()
@@ -44,13 +42,6 @@ class BucketListViewModel {
                 print("🚨 Error: Fetch Category")
             }
         }
-
-//        do {
-//            try context.save()
-//            fetchBucketList()
-//        } catch {
-//            print("🚨 Error: Save Bucket List Item")
-//        }
     }
 
     func editBucketListItem(_ task: Task, _ title: String, _ newCategory: Category) {
@@ -116,7 +107,6 @@ class BucketListViewModel {
     func formattedDate(from date: Date?) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
         if let date = date {
             return dateFormatter.string(from: date)
         } else {
