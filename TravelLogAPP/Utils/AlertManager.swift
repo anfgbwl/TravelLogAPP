@@ -21,6 +21,7 @@ class AlertManager {
             } else {
                 completion(nil)
             }
+            print("Add 성공")
         }
         let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
         alert.addAction(add)

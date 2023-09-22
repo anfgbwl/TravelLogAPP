@@ -68,8 +68,11 @@ private extension BucketListViewController {
     func tableViewReload() {
         viewModel.tableViewReloadHandler = { [weak self] in
             print("핸들러 작동")
+            
             DispatchQueue.main.async {
+                self?.bucketListView.tableView.reloadData()
                 print("테이블뷰 리로드")
+                
                 if let categories = CategoryManager.shared.categories {
                     print("카테고리 수: \(categories.count)")
                 } else {
@@ -80,7 +83,7 @@ private extension BucketListViewController {
                 } else {
                     print("테스크 데이터 없음")
                 }
-                self?.bucketListView.tableView.reloadData()
+                
             }
         }
     }
@@ -142,8 +145,6 @@ extension BucketListViewController: UITableViewDelegate, UITableViewDataSource {
         let titleLabel = UILabel()
         if let category = categories?[section], let title = category.title {
             titleLabel.text = title
-        } else {
-            titleLabel.text = "N/A"
         }
         titleLabel.textColor = .link
         titleLabel.frame = CGRect(x: 20, y: 0, width: tableView.bounds.size.width - 30, height: 20)

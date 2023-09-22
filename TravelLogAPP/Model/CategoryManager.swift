@@ -96,6 +96,13 @@ class CategoryManager {
                 context.delete(category)
             }
             try context.save()
+            fetchCategory { _ in
+                do {
+                    try self.context.save()
+                } catch {
+                    print("🚨 Error: Fetch Category")
+                }
+            }
         } catch {
             print("🚨 Error: Delete all categories")
         }
